@@ -4,8 +4,12 @@ const timeElapsed = Date.now();
 const today = new Date(timeElapsed);
 
 const dateSelect = document.getElementById("dateSelect")
-dateSelect.value = today.toISOString().substring(0, 10)
-dateSelect.min = today.toISOString().substring(0, 10)
+
+const dateTime = new Date(+new Date()+8*3600*1000);
+// dateSelect.min = today.toISOString().substring(0, 10)
+// dateSelect.value = today.toISOString().substring(0, 10)
+dateSelect.value = new Date(dateTime).toISOString().substring(0, 10)
+dateSelect.min = new Date(dateTime).toISOString().substring(0, 10)
 
 /**
  * 给id为...的选择框添加内容
@@ -52,7 +56,7 @@ document.getElementById('searchButton').onclick = function () {
     const end = document.getElementById('endSelect').value.trim()
     const date = document.getElementById('dateSelect').value.trim()
 
-    const url = 'getFlightServlet?airportLocation1='+ start + '&airportLocation2='+ end + '&time=' + date
+    const url = 'getFlightByMessageServlet?airportLocation1='+ start + '&airportLocation2='+ end + '&time=' + date
     const xhttp = cbAJAX(url)
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
