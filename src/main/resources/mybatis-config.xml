@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--
+    environments：配置数据库连接环境信息，可以配置多个environment，通过default属性切换不同的environment
+    （将需要的数据源id命名为development）
+    -->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <!-- 数据库链接信息 -->
+                <property name="driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+                <property name="url" value="jdbc:sqlserver://localhost:1433;
+                databaseName=数据库课程设计-机票实名销售系统设计;integratedSecurity=false"/>
+                <property name="username" value="sa"/>
+                <property name="password" value="123456"/>
+            </dataSource>
+        </environment>
+
+        <environment id="test">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <!-- 数据库链接信息 -->
+                <property name="driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+                <property name="url" value="jdbc:sqlserver://localhost:1433;
+                databaseName=Student_info_20211499;integratedSecurity=false"/>
+                <property name="username" value="sa"/>
+                <property name="password" value="123456"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <!-- 加载sql映射文件 -->
+        <mapper resource="com/user/mapper/userMapper.xml"/>
+        <mapper resource="com/passenger/mapper/passengerMapper.xml"/>
+        <mapper resource="com/plane/mapper/flightMapper.xml"/>
+    </mappers>
+</configuration>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+	<meta charset="UTF-8">
+	<title>login page</title>
+	<link href="static/css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="static/js/jquery.min.js"></script>
+	<!-- Custom Theme files -->
+	<link href="static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- Custom Theme files -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="application/x-javascript">
+		addEventListener("load", function() {
+			setTimeout(hideURLbar, 0);
+			}, false
+		);
+		function hideURLbar(){
+			window.scrollTo(0,1);
+		}
+	</script>
+	<!--Animation-->
+	<script src="static/js/wow.min.js"></script>
+	<link href="static/css/animate.css" rel='stylesheet' type='text/css' />
+	<script>
+		new WOW().init();
+	</script>
+	<script type="text/javascript" src="static/js/move-top.js"></script>
+	<script type="text/javascript" src="static/js/easing.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event){
+				event.preventDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
+			});
+		});
+	</script>
+
+	<script src="static/js/function.js"></script>
+</head>
+<body>
+    <!-- header-section-starts -->
+	<div class="header">
+		<div class="container">
+			<div class="top-header">
+				<div class="logo">
+					<a href="index.html"><img src="static/images/logo3.png" class="img-responsive" alt="" /></a>
+				</div>
+				<div class="queries">
+					<p>联 系 方 式<span>189 1347 5590 </span><label>(12AM to 12PM)</label></p>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+
+		<!-- 导航栏 -->
+		<div class="menu-bar">
+			<div class="container">
+				<div class="top-menu">
+					<ul>
+						<li><a href="index.html">首页</a></li>|
+						<li><a href="popular-AirLine.html">特价机票</a></li>|
+						<li><a href="order.html">查看订单</a></li>|
+						<li><a href="idMessage.html">新增乘客</a></li>
+						<div class="clearfix"></div>
+					</ul>
+				</div>
+				<div class="login-section">
+					<ul>
+						<li><a href="login.html">登录</a>  </li> |
+						<li><a href="register.html">注册</a> </li> |
+						<li><a href="#">帮助</a></li>
+						<div class="clearfix"></div>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!-- header-section-ends -->
+	<!-- content-section-starts -->
+	<div class="content">
+		<div class="container">
+			<div class="login-page">
+			    <div class="dreamcrub">
+<!--			   	 	<ul class="breadcrumbs">-->
+<!--                    	<li class="home">-->
+<!--                    	   <a href="index.html" title="Go to Home Page">首页</a>&nbsp;-->
+<!--                    	   <span>&gt;</span>-->
+<!--                    	</li>-->
+<!--                    	<li class="women">-->
+<!--                    	   登录-->
+<!--                    	</li>-->
+<!--                	</ul>-->
+                	<ul class="previous">
+                		<li><a href="index.html">返回首页</a></li>
+                	</ul>
+                	<div class="clearfix"></div>
+			   </div>
+			   		<div class="account_grid">
+			   			<div class="col-md-6 login-left wow fadeInLeft" data-wow-delay="0.4s">
+			  	 			<h3>NEW CUSTOMERS</h3>
+				 			<p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+				 			<a class="acount-btn" href="register.html">创 建 一 个 新 账 户 !</a>
+			   			</div>
+			   			<div class="col-md-6 login-right wow fadeInRight" data-wow-delay="0.4s">
+			  				<h3>登录并享受购票服务!</h3>
+							<p>如果您已经拥有一个账户 ，请在此登录</p>
+							<form id="loginForm" action="#">
+				  				<div>
+									<span>
+										账 号
+										<label> *</label>
+										<label id='loginLabel' style="color: #ac2925;display: none">账号或密码错误!</label>
+									</span>
+									<input id="loginName" name="account" type="text" />
+				  				</div>
+				  				<div>
+									<span>
+										密 码
+										<label> *</label>
+									</span>
+									<input id="loginPwd" name="pwd" type="password" />
+				  				</div>
+								<input id="loginButton" type="button" value="登录">
+<!--				  				<input type="submit" value="登 录">-->
+								<a class="forgot" href="#">你忘记了密码?</a>
+			    			</form>
+			   			</div>
+						<script src="static/js/login.js"></script>
+					</div>
+		   		</div>
+			</div>
+		</div>
+	</div>
+	<!-- content-section-ends -->
+
+	<div>
+		<br/><br/><br/><br/><br/><br/><br/>
+	</div>
+	<!-- footer-section-starts -->
+	<div class="footer">
+		<div class="container">
+			<p class="wow fadeInLeft" data-wow-delay="0.4s">数据库课程设计-机票实名销售系统 <a>20211499 202105Z 李敬儒</a></p>
+		</div>
+	</div>
+	<!-- footer-section-ends -->
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+					containerID: 'toTop', // fading element id
+					containerHoverID: 'toTopHover', // fading element hover id
+					scrollSpeed: 1200,
+					easingType: 'linear'
+				};
+			*/
+
+			$().UItoTop({ easingType: 'easeOutQuart' });
+
+		});
+	</script>
+	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+</body>
+</html>

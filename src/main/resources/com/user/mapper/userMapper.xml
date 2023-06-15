@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.user.mapper.userMapper">
+
+    <select id="findUserMessage">
+        select *
+        from findUserMessage
+        where account = #{account}
+    </select>
+
+    <update id="changeAType">
+        update userLogin
+        set aType = #{aType}
+        where account = #{account}
+    </update>
+
+    <select id="findUser" resultType="com.user.entity.userType">
+        {
+            call procedure_verifyLogin (
+                #{account},
+                #{password}
+            )
+        }
+    </select>
+
+    <insert id="CreateNewUser">
+        insert
+        into [user](account, uName, password)
+        values(#{account}, #{uName}, #{password})
+    </insert>
+
+    <update id="AddUserAge">
+        update [user]
+        set age=#{age}
+        where account=#{account}
+    </update>
+
+    <update id="AddUserSex">
+        update [user]
+        set sex=#{sex}
+        where account=#{account}
+    </update>
+
+    <update id="AddUserEducation">
+        update [user]
+        set education=#{education}
+        where account=#{account}
+    </update>
+
+    <update id="AddUserCareer">
+        update [user]
+        set career=#{career}
+        where account=#{account}
+    </update>
+
+    <update id="ChangeUserAType">
+        update [user]
+        set aType=#{aType}
+        where account=#{account}
+    </update>
+</mapper>

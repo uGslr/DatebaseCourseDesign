@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.passenger.mapper.passengerMapper">
+    <select id="findPassenger">
+        select *
+        from passenger
+        Where pIDNo = #{pIDNo}
+    </select>
+
+    <insert id="addPassenger">
+        insert
+        into passenger(pName, pIDNoType, pIDNo)
+        values(#{pName}, #{pIDNoType}, #{pIDNo})
+    </insert>
+
+    <update id="addPhone">
+        update passenger
+        set pPhone = #{pPhone}
+        where pIDNo = #{pIDNo}
+    </update>
+
+    <select id="findConnect" resultType="com.passenger.entity.PandU">
+        select *
+        from passenger_user
+        where pIDNo = #{pIDNo} and account = #{account}
+    </select>
+
+    <!--
+    给passenger_user表加一个触发器，插入时自动给num加一个唯一的值
+      -->
+    <insert id="addConnect">
+        insert
+        into passenger_user(pIDNo, account)
+        values(#{pIDNo}, #{account})
+    </insert>
+</mapper>
