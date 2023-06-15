@@ -163,24 +163,11 @@ function fun_IMB () {
         const pIDNo = document.getElementById("idInput").value.trim()
         const pPhone = document.getElementById("phoneInput").value.trim()
 
-        // 发送ajax请求
-        // 1 创建核心对象
-        let xhttp
-        if (window.XMLHttpRequest) {
-            xhttp = new XMLHttpRequest()
-        } else {
-            xhttp = new ActiveXObject("Microsoft.XMLHTTP")
-        }
-        // 2 发送请求
-        xhttp.open("GET", servletUrl+'idMessageServlet?' +
-            'pName='+ pName +
-            '&pIDNoType='+ pIDNoType +
-            '&pIDNo='+ pIDNo +
-            '&pPhone='+ pPhone,
-            true
-        )
-        xhttp.send()
-        // 3 获取响应
+        const url = 'idMessageServlet?pName='+ pName + '&pIDNoType='+ pIDNoType + '&pIDNo='+ pIDNo + '&pPhone='+ pPhone
+
+        const xhttp = cbAJAX(url)
+
+        // 获取响应
         xhttp.onreadystatechange = function () {
             if (this.readyState === 4 && this.status === 200) {
 

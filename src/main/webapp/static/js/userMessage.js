@@ -1,21 +1,10 @@
-
-function getUserMessage () {
+{
 
     const account = getAccount()
 
-    let xhttp
+    const url = 'getUserMessageServlet?account=' + account
 
-    if (window.XMLHttpRequest) {
-        xhttp = new XMLHttpRequest()
-    } else {
-        xhttp = new ActiveXObject("Microsoft.XMLHTTP")
-    }
-    // 2 发送请求
-    xhttp.open("GET", servletUrl+'getUserMessageServlet?' +
-        'account=' + account,
-        true
-    )
-    xhttp.send()
+    const xhttp = cbAJAX(url)
     // 3 获取响应
     xhttp.onreadystatechange = function () {
 

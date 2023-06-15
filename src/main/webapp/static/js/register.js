@@ -207,27 +207,17 @@ registerButton.onclick = function () {
         const age = document.getElementById('registerDate').value.trim()
         const education = document.getElementById('registerEducation').value.trim()
         const career = document.getElementById('registerCareer').value.trim()
-        // 发送ajax请求
-        // 1 创建核心对象
-        let xhttp
-        if (window.XMLHttpRequest) {
-            xhttp = new XMLHttpRequest()
-        } else {
-            xhttp = new ActiveXObject("Microsoft.XMLHTTP")
-        }
-        // 2 发送请求
-        xhttp.open("GET", servletUrl+'registerServlet?' +
+
+        const url = 'registerServlet?' +
             'account='+account+
             '&pwd='+pwd+
             '&name='+name+
             '&sex='+sex+
             '&age='+age+
             '&education='+education+
-            '&career='+career,
-            true
-        )
-        xhttp.send()
-        // 3 获取响应
+            '&career='+career
+        // 发送ajax请求
+        const xhttp = cbAJAX(url)
         xhttp.onreadystatechange = function () {
             if (this.readyState === 4 && this.status === 200) {
                 if (this.responseText.trim() === 'true') {

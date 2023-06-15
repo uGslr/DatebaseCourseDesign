@@ -51,23 +51,15 @@ function updateMessageButtonFun () {
         const education = document.getElementById("userEducation").value.trim()
         const career = document.getElementById("userCareer").value.trim()
 
-        let xhttp
-
-        if (window.XMLHttpRequest) {
-            xhttp = new XMLHttpRequest()
-        } else {
-            xhttp = new ActiveXObject("Microsoft.XMLHTTP")
-        }
-        // 2 发送请求
-        xhttp.open("GET", servletUrl+'updateUserMessageServlet?' +
+        const url = 'updateUserMessageServlet?' +
             'account=' + getAccount() +
             '&sex='+sex+
             '&age='+age+
             '&education='+education+
-            '&career='+career,
-            true
-        )
-        xhttp.send()
+            '&career='+career
+
+        const xhttp = cbAJAX(url)
+
         // 3 获取响应
         xhttp.onreadystatechange = function () {
             if (this.readyState === 4 && this.status === 200) {
