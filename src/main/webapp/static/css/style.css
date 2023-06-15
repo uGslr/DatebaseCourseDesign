@@ -18,7 +18,7 @@ body a{
 }
 input[type="button"],
 input[type="submit"],
-input[type="button"] {
+button {
 	transition:0.5s all;
 	-webkit-transition:0.5s all;
 	-moz-transition:0.5s all;
@@ -52,6 +52,89 @@ select{
 	/*text-align-last: center; !* 文本居中*!*/
 }
 
+#buykk {
+	display: flex;
+	position: fixed;
+	z-index: 10;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.19);
+	top:0;
+	left:0;
+}
+
+#buykk-a {
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%, -50%);
+	background: #FFFFFF;
+	padding: 25px;
+	border-radius: 15px;
+	max-width: 500px;
+	width: 100%;
+}
+
+#buykk-aa {
+	/*background: rgba(217, 217, 217, 0.48);*/
+	border-radius: 15px;
+}
+
+#buykk-b,#buykk-c {
+	text-align: center;
+	background: #D9D9D9;
+	border-radius: 15px;
+	width: 100%;
+}
+
+#buykk-b span {
+	font-size: 20px;
+}
+
+#buykk-d table{
+	text-align: center;
+}
+
+#buykk-d div{
+	background: #D9D9D9;
+	height: 60px;
+	width: 180px;
+	border-radius: 15px;
+	float: left;
+}
+
+#buykk-e select {
+	text-align: center;
+	width:50%;
+	padding:0.6em 0.5em;
+	border:none;
+	outline:none;
+	color: #000000;
+	background: #D9D9D9;
+	font-weight:400;
+	margin-top: 7px;
+	font-size:16px;
+	border-radius:5px;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+}
+
+#buykk-button {
+	text-align: center;
+}
+
+#buykk-button button {
+	background: rgba(255, 255, 255, 0);
+	border: rgba(255, 255, 255, 0);
+	width: 130px;
+}
+
+#buykk-button button:hover{
+	color:#5BBD50;
+}
 
 .header {
 	border-top: 3px solid #5BBD50;
@@ -230,6 +313,10 @@ select{
 	font-family: 'Lobster Two', cursive;
 	font-size:2.6em;
 	font-weight:500;
+}
+.line span{
+	color: #5d5d5d;
+	font-size: 0.1em;
 }
 .banner-info{
 	padding-top:8em;
@@ -2266,7 +2353,8 @@ address {
 	margin: 0 0.9em 0.3em 0;
 	font-family: 'Lobster Two', cursive;
 }
-.buy input[type="button"]{
+.buy input[type="button"],
+.buy button {
 	border:none;
 	outline:none;
 	padding:0.3em 1.6em;
@@ -2280,7 +2368,8 @@ address {
 	-moz-border-radius: 20px;
 	-o-border-radius: 20px;
 }
-.buy input[type="button"]:hover{
+.buy input[type="button"]:hover,
+.buy button:hover {
 	background:#E24425;
 }
 .rating span{
@@ -3029,7 +3118,8 @@ address {
 		font-size: 1.5em;
 		margin: 0 1.1em 0em 0;
 	}
-	.buy input[type="button"] {
+	.buy input[type="button"],
+	.buy button  {
 		padding: 0.3em 1.4em;
 		font-size: 1.3em;
 	}
@@ -3366,7 +3456,8 @@ address {
 	.Popular-Restaurants-grid {
 		padding-bottom: 1.5em;
 	}
-	.buy input[type="button"] {
+	.buy input[type="button"],
+	.buy button  {
 		padding: 0.2em 1.3em;
 		font-size: 1.2em;
 	}
@@ -3650,7 +3741,8 @@ address {
 		font-size: 1.2em;
 		margin: 0 1em 0em 0;
 	}
-	.buy input[type="button"] {
+	.buy input[type="button"],
+	.buy button  {
 		padding: 0.2em 1.2em;
 		font-size: 1.1em;
 	}
@@ -4027,7 +4119,8 @@ address {
 	.buy span {
 		font-size: 1.1em;
 	}
-	.buy input[type="button"] {
+	.buy input[type="button"],
+	.buy button  {
 		padding: 0.2em 1.1em;
 		font-size: 1em;
 	}

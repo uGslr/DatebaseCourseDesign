@@ -60,7 +60,6 @@ document.getElementById('searchButton').onclick = function () {
             let inner = ''
             $.each(message, function (i, n) {
                 inner = inner + flightMessageString(
-                    i,
                     n.airlineCompanyName,
                     n.flightNo,
                     n.airportName1,
@@ -85,10 +84,9 @@ document.getElementById('searchButton').onclick = function () {
             }
         }
     }
-
 }
 
-function flightMessageString (i, airLineCompanyName, flightNo, airportName1,
+function flightMessageString (airLineCompanyName, flightNo, airportName1,
                               takeOffTime, airportName2, landTime, ectMoney, bctMoney) {
     let a = "<div class=\"Popular-Restaurants-grid wow fadeInRight\" data-wow-delay=\"0.4s\">\n" +
         "<div class=\"col-md-2 restaurent-title\">" +
@@ -120,10 +118,27 @@ function flightMessageString (i, airLineCompanyName, flightNo, airportName1,
         "</div>" +
         "<div class=\"col-md-7 buy\">" +
         "<span>"+ "￥" + ectMoney + "/￥" + bctMoney + "</span>" +
-        "<input type=\"button\" value=\"订票\">" +
+        "<button onclick=" + 'addClickToButton(' + "\"" + flightNo + "\"" + ')' + ">订票</button>" +
         "</div>" +
         "<div class=\"clearfix\"></div>" +
         "</div>"
 
     return a
+}
+
+/**
+ * 给按钮添加的点击事件，可以通过航班号信息搜索到航班信息，并且出现弹框为用户提供购买选项
+ * @param flightNo
+ */
+function addClickToButton(flightNo) {
+    const account = getAccount()
+
+    if(account==null || account === '') {
+        document.location.href = "login.html"
+    } else {
+        document.getElementById('buykk').style.display = 'flex';
+        document.getElementById('flightNo').innerText = flightNo
+
+
+    }
 }

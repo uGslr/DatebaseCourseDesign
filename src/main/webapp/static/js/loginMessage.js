@@ -1,7 +1,7 @@
 
 
 /**
- * 寻找到cookie中存储的信息
+ * 找到了cookie中存储的信息
  * 登录账号
  * @param account 用户账号
  */
@@ -22,7 +22,6 @@ function needLogin () {
         changeStatic (account)
     } else {
         document.location.href = "login.html"
-        window.alert("请登录")
     }
 }
 
