@@ -13,4 +13,6 @@ public interface flightMapper {
                                    @Param("time1") String time1,
                                    @Param("time2") String time2);
     List<flight> getFlightByNo (@Param("flightNo") String flightNo);
+
+    List<flight> getFlightAll ();
 }

@@ -52,6 +52,9 @@ select{
 	/*text-align-last: center; !* 文本居中*!*/
 }
 
+#administratorTable td {
+	text-align: left;
+}
 #buykk {
     display: flex;
     position: fixed;

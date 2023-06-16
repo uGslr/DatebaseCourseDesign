@@ -35,6 +35,14 @@ function notNeedLogin () {
     }
 }
 
+function adminLogin () {
+    const account = getAccount()
+    const message = "欢迎您:"+account
+    document.getElementById("loginMessage").innerHTML =
+        "<a href=\"#\">"+message+"</a>"
+    document.getElementById("clearCookie").innerHTML = "退出登录"
+}
+
 // window.onload = function () {
 //
 //     let id = null

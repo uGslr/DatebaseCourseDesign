@@ -16,6 +16,7 @@ import java.io.IOException;
 public class getUserMessageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // 实现服务类
         userService us = new userServiceImpl();
 
         userMessage um = us.getUserMessage(req.getParameter("account"));

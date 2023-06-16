@@ -1,7 +1,7 @@
 package com.user.servlet;
 
-import com.user.service.impl.loginServiceImpl;
-import com.user.service.loginService;
+import com.user.service.impl.userServiceImpl;
+import com.user.service.userService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,17 +23,19 @@ public class loginServlet extends HttpServlet {
         String account = req.getParameter("account");
         String password = req.getParameter("pwd");
 
-        loginService ls = new loginServiceImpl();
+        // 实现服务类
+        userService us = new userServiceImpl();
 
-        boolean flag = ls.validateLogin(account,password);
+        String aType = us.validateLogin(account,password);
 
-        if (flag) {
+        if (aType != "") {
             Cookie cookie = new Cookie("account", account);
             resp.addCookie(cookie);
             System.out.println("loginServlet: 已尝试发送cookie");
+
         }
 
-        resp.getWriter().write(""+flag);
+        resp.getWriter().write(aType);
 
     }
 

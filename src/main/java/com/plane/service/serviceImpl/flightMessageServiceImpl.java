@@ -36,4 +36,16 @@ public class flightMessageServiceImpl implements flightMessageService {
 
         return fm.getFlightByNo(flightNo);
     }
+
+    @Override
+    public List<flight> getFlightAll() {
+
+         SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtil.getSqlSessionFactory();
+
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        flightMapper fm = sqlSession.getMapper(flightMapper.class);
+
+        return fm.getFlightAll();
+    }
 }

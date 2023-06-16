@@ -1,7 +1,7 @@
 package com.user.servlet;
 
-import com.user.service.impl.registerServiceImpl;
-import com.user.service.registerService;
+import com.user.service.impl.userServiceImpl;
+import com.user.service.userService;
 import com.utils.TranscodingUtil;
 
 import javax.servlet.ServletException;
@@ -28,9 +28,10 @@ public class registerServlet extends HttpServlet {
         System.out.println(name+" "+account+" "+pwd+" "+sex+" "+age+" "+education+" "+career);
 
 
-        registerService rs = new registerServiceImpl();
+        // 实现服务类
+        userService us = new userServiceImpl();
 
-        boolean flag = rs.createNew(name, account, pwd, sex, age, education, career);
+        boolean flag = us.createNew(name, account, pwd, sex, age, education, career);
 
         if (flag) {
             System.out.println("注册成功");

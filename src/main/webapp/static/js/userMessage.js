@@ -1,4 +1,4 @@
-{
+function getUserMessage(){
 
     const account = getAccount()
 

@@ -8,12 +8,16 @@ loginButton.onclick = function () {
     const url = 'loginServlet?account=' + account + '&pwd='+ pwd
 
     const xhttp = cbAJAX(url)
+
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
-            if (this.responseText.trim() === 'true') {
+            if (this.responseText.trim() === 'user') {
                 document.getElementById('loginLabel').style.display = 'none'
                 window.location.href = "index.html"
-            } else {
+            } else if (this.responseText.trim() === 'admin') {
+                document.getElementById('loginLabel').style.display = 'none'
+                window.location.href = "administrator.html"
+            } else{
                 document.getElementById('loginLabel').style.display = ''
             }
         }

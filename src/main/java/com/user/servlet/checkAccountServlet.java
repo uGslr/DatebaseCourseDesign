@@ -1,7 +1,7 @@
 package com.user.servlet;
 
-import com.user.service.impl.registerServiceImpl;
-import com.user.service.registerService;
+import com.user.service.impl.userServiceImpl;
+import com.user.service.userService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,14 +19,14 @@ public class checkAccountServlet extends HttpServlet {
         System.out.println("正在检查账号是否已经被注册...");
 
         // 实现服务类
-        registerService rs = new registerServiceImpl();
+        userService us = new userServiceImpl();
 
         String account = req.getParameter("account");
 
         /*
         验证账号是否已经被注册
          */
-        boolean t = rs.checkAccount(account);
+        boolean t = us.checkAccount(account);
         System.out.println("账号已经被注册？"+t);
         resp.getWriter().write("" + t);
     }
