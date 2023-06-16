@@ -76,7 +76,6 @@
 
 	     </script>
 	<script src="static/js/jquery.easydropdown.js"></script>
-	<script src="static/js/loginMessage.js"></script>
 	<script>
 		const servletUrl = "http://localhost:8080/demo3/"
 		window.onload = function () {
@@ -90,6 +89,8 @@
 		}
 	</script>
 
+	<script src="static/js/loginMessage.js"></script>
+	<script src="static/js/deLogin.js"></script>
 	<script src="static/js/function.js"></script>
 </head>
 <body>
@@ -122,7 +123,7 @@
 				<div class="login-section">
 					<ul>
 						<li id="loginMessage"><a href="login.html">登录</a>  </li> |
-						<li><a id="clearCookie">注册</a> </li> |
+						<li><a id="clearCookie" onclick="deLogin()">注册</a> </li> |
 						<li><a href="#">帮助</a></li>
 						<div class="clearfix"></div>
 					</ul>
@@ -294,26 +295,23 @@
 		</div>
 	</div>
 	<!-- footer-section-ends -->
-	  <script type="text/javascript">
-						$(document).ready(function() {
-							/*
-							var defaults = {
-					  			containerID: 'toTop', // fading element id
-								containerHoverID: 'toTopHover', // fading element hover id
-								scrollSpeed: 1200,
-								easingType: 'linear' 
-					 		};
-							*/
-							
-							$().UItoTop({ easingType: 'easeOutQuart' });
-							
-						});
-					</script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+						var defaults = {
+					  		containerID: 'toTop', // fading element id
+							containerHoverID: 'toTopHover', // fading element hover id
+							scrollSpeed: 1200,
+							easingType: 'linear'
+					 	};
+						*/
 
-	<script src="static/js/deLogin.js"></script>
+			$().UItoTop({ easingType: 'easeOutQuart' });
 
-				<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+		});
+	</script>
 
+	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 
 </body>
 </html>

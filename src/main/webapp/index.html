@@ -28,6 +28,7 @@
 		});
 	</script>
 
+	<script src="static/js/deLogin.js"></script>
 	<script src="static/js/function.js"></script>
 	<script src="static/js/loginMessage.js"></script>
 	<script>
@@ -45,65 +46,56 @@
 </head>
 <body>
 	<div id="buykk">
-		<div id="buykk-a">
-			<div id="buykk-aa">
-				<div id="buykk-aaa">
-					<br/>
-					<div id="buykk-b">
-						<span>航班号:</span><span id="flightNo">xcvbnm10102309021142</span>
-					</div>
-					<br/>
-					<div id="buykk-c">
-						<label>东方航空</label>
-						<label>zxcvbnm</label>
-					</div>
-					<br/>
-					<div id="buykk-d">
-						<table>
-							<td>
-								<div>
-									<label>北京</label>
-									<br/>
-									<label>大兴国际机场</label>
-									<br/>
-									<label>2021-01-02 16:23</label>
-								</div>
-							</td>
-							<td style="width: 200px">
-								<label>飞往</label>
-								<br/>
-								<label>------></label>
-							</td>
-							<td>
-								<div>
-									<label>上海</label>
-									<br/>
-									<label>浦东国际机场</label>
-									<br/>
-									<label>2021-01-02 16:23</label>
-								</div>
-							</td>
-						</table>
-						<br/>
-					</div>
-				</div>
+  		<div class="buykk-container">
+    		<div class="buykk-header">
+      			<h3>航班信息</h3>
+      			<button class="buykk-close" onclick="document.getElementById('buykk').style.display='none'">关闭</button>
+    		</div>
+    		<div class="buykk-body">
+      			<div class="buykk-flight-info">
+        			<p><span>航班号：</span><span id="flightNo">xcvbnm10102309021142</span></p>
+        			<p><span>航空公司：</span><span>东方航空</span></p>
+        			<p><span>机型：</span><span>zxcvbnm</span></p>
+        			<table>
+          				<colgroup>
+            				<col style="width: 33%">
+            				<col style="width: 34%">
+            				<col style="width: 33%">
+          				</colgroup>
+          				<tbody>
+            				<tr>
+            	  				<td>
+            	    				<div>
+            	      					<p>北京</p>
+            	      					<p>大兴国际机场</p>
+            	      					<p>2021-01-02 16:23</p>
+            	    				</div>
+            	  				</td>
+            	  				<td><p>飞往</p></td>
+            	  				<td>
+            	    				<div>
+            	      					<p>上海</p>
+            	      					<p>浦东国际机场</p>
+            	      					<p>2021-01-02 16:23</p>
+            	    				</div>
+            	  				</td>
+            				</tr>
+          				</tbody>
+        			</table>
+      			</div>
+      			<div class="buykk-cabin-info">
+        			<label for="cabin-select">选择舱位：</label>
+        			<select id="cabin-select">
+          				<option value="economy">经济舱</option>
+          				<option value="business">商务舱/头等舱</option>
+        			</select>
+      			</div>
 			</div>
-			<div id="buykk-e">
-				<select>
-					<option>
-						经济舱
-					</option>
-					<option>
-						商务舱/头等舱
-					</option>
-				</select>
-			</div>
-			<br/>
-			<div id="buykk-button">
-				<button onclick="document.getElementById('buykk').style.display='none'" style="text-align: left">退出</button>
-				<button onclick="document.getElementById('buykk').style.display='none'" style="text-align: right">购买</button>
-			</div>
-		</div>
+    		<div class="buykk-footer">
+    		  	<button class="buykk-cancel" onclick="document.getElementById('buykk').style.display='none'">取消</button>
+    		  	<button class="buykk-confirm" onclick="document.getElementById('buykk').style.display='none'">确认购买</button>
+    		</div>
+  		</div>
 	</div>
     <!-- header-section-starts -->
 	<div class="header">
@@ -132,7 +124,7 @@
 				<div class="login-section">
 					<ul>
 						<li id="loginMessage"><a href="login.html">登录</a>  </li> |
-						<li><a id="clearCookie">注册</a> </li> |
+						<li><a onclick="deLogin()" id="clearCookie">注册</a> </li> |
 						<li><a href="#">帮助</a></li>
 						<div class="clearfix"></div>
 					</ul>
@@ -602,7 +594,6 @@
 		});
 	</script>
 
-	<script src="static/js/deLogin.js"></script>
 	<script src="static/js/index.js"></script>
 
 	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>

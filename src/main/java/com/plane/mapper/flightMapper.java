@@ -8,8 +8,9 @@ import java.util.List;
 
 @Mapper
 public interface flightMapper {
-    List<flight> getFlightMessage (@Param("airportLocation1") String airportLocation1,
+    List<flight> getFlightByMessage (@Param("airportLocation1") String airportLocation1,
                                    @Param("airportLocation2") String airportLocation2,
                                    @Param("time1") String time1,
                                    @Param("time2") String time2);
+    List<flight> getFlightByNo (@Param("flightNo") String flightNo);
 }

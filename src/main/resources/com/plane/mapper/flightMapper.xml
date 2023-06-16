@@ -4,14 +4,27 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.plane.mapper.flightMapper">
-    <select id="getFlightMessage">
-        select
-            flightNo, takeOffTime, landTime, economyClassTicket,
-            businessClassTicket, ectMoney, bctMoney,
-            airlineCompanyName, airportName1, airportName2
-        from findFlightMessageAll
-        where airportLocation1 = #{airportLocation1}
-                and airportLocation2 = #{airportLocation2}
-                and takeoffTime between #{time1} and #{time2}
+    <select id="getFlightByMessage">
+<!--        select *-->
+<!--        from findFlightMessageAll-->
+<!--        where airportLocation1 = #{airportLocation1}-->
+<!--                and airportLocation2 = #{airportLocation2}-->
+<!--                and takeoffTime between #{time1} and #{time2}-->
+        {
+            call procedure_getTicketByMessage (
+                #{airportLocation1},
+                #{airportLocation2},
+                #{time1},
+                #{time2}
+            )
+        }
+    </select>
+
+    <select id="getFlightByNo">
+        {
+            call procedure_getTicketByNo (
+                #{flightNo}
+            )
+        }
     </select>
 </mapper>

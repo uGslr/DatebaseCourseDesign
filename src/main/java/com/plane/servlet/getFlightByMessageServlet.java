@@ -26,11 +26,11 @@ public class getFlightByMessageServlet extends HttpServlet {
         System.out.println(airportLocation1+" "+airportLocation2+" "+time);
 
         flightMessageService fms = new flightMessageServiceImpl();
-        List<flight> f = fms.getFlightMessage(airportLocation1, airportLocation2, time);
+        List<flight> f = fms.getFlightByMessage(airportLocation1, airportLocation2, time);
 
 //        System.out.println(TimeUtil.toDate(time, "yyyy-MM-dd").compareTo(TimeUtil.getTime("yyyy-MM-dd")));
         if (TimeUtil.toDate(time, "yyyy-MM-dd").compareTo(TimeUtil.getTime("yyyy-MM-dd")) == 0) {
-            /*
+            /**
             删除当天内已经超过现在时间的航班
             没有测试过这个功能
              */

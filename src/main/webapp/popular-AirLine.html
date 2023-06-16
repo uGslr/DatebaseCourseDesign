@@ -10,10 +10,14 @@
 	<link href="static/css/style.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- Custom Theme files -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-	<!--webfont-->
-	<link href='http://fonts.useso.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.useso.com/css?family=Lobster+Two:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+	<script type="application/x-javascript">
+		addEventListener("load", function() {
+			setTimeout(hideURLbar, 0);
+			}, false);
+		function hideURLbar(){
+			window.scrollTo(0,1);
+		}
+	</script>
 	<!--Animation-->
 	<script src="static/js/wow.min.js"></script>
 	<link href="static/css/animate.css" rel='stylesheet' type='text/css' />
@@ -31,6 +35,7 @@
 		});
 	</script>
 
+	<script src="static/js/deLogin.js"></script>
 	<script src="static/js/function.js"></script>
 	<script src="static/js/loginMessage.js"></script>
 	<script>
@@ -76,7 +81,7 @@
 				<div class="login-section">
 					<ul>
 						<li id="loginMessage"><a href="login.html">登录</a>  </li> |
-						<li><a id="clearCookie">注册</a> </li> |
+						<li><a id="clearCookie" onclick="deLogin()">注册</a> </li> |
 						<li><a href="#">帮助</a></li>
 						<div class="clearfix"></div>
 					</ul>
@@ -285,26 +290,23 @@
 		</div>
 	</div>
 	<!-- footer-section-ends -->
-	  <script type="text/javascript">
-						$(document).ready(function() {
-							/*
-							var defaults = {
-					  			containerID: 'toTop', // fading element id
-								containerHoverID: 'toTopHover', // fading element hover id
-								scrollSpeed: 1200,
-								easingType: 'linear' 
-					 		};
-							*/
-							
-							$().UItoTop({ easingType: 'easeOutQuart' });
-							
-						});
-					</script>
+	<script type="text/javascript">
+		  $(document).ready(function() {
+			  /*
+						var defaults = {
+					  		containerID: 'toTop', // fading element id
+							containerHoverID: 'toTopHover', // fading element hover id
+							scrollSpeed: 1200,
+							easingType: 'linear'
+					 	};
+						*/
 
-	<script src="static/js/deLogin.js"></script>
+			  $().UItoTop({ easingType: 'easeOutQuart' });
 
-				<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+		  });
+	  </script>
 
+	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 
 </body>
 </html>

@@ -11,9 +11,12 @@ public class flight {
     String airlineCompanyName;
     String airportName1;
     String airportName2;
+    String airportLocation1;
+    String airportLocation2;
 
     public flight() {
     }
+
 
     public flight(String flightNo,
                   String takeOffTime,
@@ -24,7 +27,9 @@ public class flight {
                   float bctMoney,
                   String airlineCompanyName,
                   String airportName1,
-                  String airportName2) {
+                  String airportName2,
+                  String airportLocation1,
+                  String airportLocation2) {
         this.flightNo = flightNo;
         this.takeOffTime = takeOffTime;
         this.landTime = landTime;
@@ -35,6 +40,8 @@ public class flight {
         this.airlineCompanyName = airlineCompanyName;
         this.airportName1 = airportName1;
         this.airportName2 = airportName2;
+        this.airportLocation1 = airportLocation1;
+        this.airportLocation2 = airportLocation2;
     }
 
     public String getFlightNo() {
@@ -115,5 +122,25 @@ public class flight {
 
     public void setAirportName2(String airportName2) {
         this.airportName2 = airportName2;
+    }
+
+    public void setAirlineCompanyName(String airlineCompanyName) {
+        this.airlineCompanyName = airlineCompanyName;
+    }
+
+    public String getAirportLocation1() {
+        return airportLocation1;
+    }
+
+    public void setAirportLocation1(String airportLocation1) {
+        this.airportLocation1 = airportLocation1;
+    }
+
+    public String getAirportLocation2() {
+        return airportLocation2;
+    }
+
+    public void setAirportLocation2(String airportLocation2) {
+        this.airportLocation2 = airportLocation2;
     }
 }
