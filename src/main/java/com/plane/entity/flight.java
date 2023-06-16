@@ -13,10 +13,10 @@ public class flight {
     String airportName2;
     String airportLocation1;
     String airportLocation2;
+    String planeNo;
 
     public flight() {
     }
-
 
     public flight(String flightNo,
                   String takeOffTime,
@@ -29,7 +29,8 @@ public class flight {
                   String airportName1,
                   String airportName2,
                   String airportLocation1,
-                  String airportLocation2) {
+                  String airportLocation2,
+                  String planeNo) {
         this.flightNo = flightNo;
         this.takeOffTime = takeOffTime;
         this.landTime = landTime;
@@ -42,6 +43,7 @@ public class flight {
         this.airportName2 = airportName2;
         this.airportLocation1 = airportLocation1;
         this.airportLocation2 = airportLocation2;
+        this.planeNo = planeNo;
     }
 
     public String getFlightNo() {
@@ -142,5 +144,13 @@ public class flight {
 
     public void setAirportLocation2(String airportLocation2) {
         this.airportLocation2 = airportLocation2;
+    }
+
+    public String getPlaneNo() {
+        return planeNo;
+    }
+
+    public void setPlaneNo(String planeNo) {
+        this.planeNo = planeNo;
     }
 }

@@ -66,10 +66,15 @@ document.getElementById('searchButton').onclick = function () {
                 inner = inner + flightMessageString(
                     n.airlineCompanyName,
                     n.flightNo,
+                    n.planeNo,
+                    n.airportLocation1,
+                    n.airportLocation2,
                     n.airportName1,
                     n.takeOffTime,
                     n.airportName2,
                     n.landTime,
+                    n.economyClassTicket,
+                    n.businessClassTicket,
                     n.ectMoney,
                     n.bctMoney
                 )
@@ -90,12 +95,16 @@ document.getElementById('searchButton').onclick = function () {
     }
 }
 
-function flightMessageString (airLineCompanyName, flightNo, airportName1,
-                              takeOffTime, airportName2, landTime, ectMoney, bctMoney) {
+function flightMessageString (airlineCompanyName, flightNo, planeNo,
+                              airportLocation1, airportLocation2,
+                              airportName1, takeOffTime,
+                              airportName2, landTime,
+                              economyClassTicket, businessClassTicket,
+                              ectMoney, bctMoney) {
     let a = "<div class=\"Popular-Restaurants-grid wow fadeInRight\" data-wow-delay=\"0.4s\">\n" +
         "<div class=\"col-md-2 restaurent-title\">" +
         "<div class=\"acno-fno\">" +
-        "<span><a href=\"#\" onclick=\"return false;\">" + airLineCompanyName + "</a></span>" +
+        "<span><a href=\"#\" onclick=\"return false;\">" + airlineCompanyName + "</a></span>" +
         "</div>" +
         "<br/>" +
         "<label>航班号：</label>" +
@@ -122,7 +131,20 @@ function flightMessageString (airLineCompanyName, flightNo, airportName1,
         "</div>" +
         "<div class=\"col-md-7 buy\">" +
         "<span>"+ "￥" + ectMoney + "/￥" + bctMoney + "</span>" +
-        "<button onclick=" + 'addClickToButton(' + "\"" + flightNo + "\"" + ')' + ">订票</button>" +
+        "<button onclick=" + 'addClickToButton(' + "\"" + flightNo
+        + "\",\"" + airlineCompanyName
+        + "\",\"" + planeNo
+        + "\",\"" + airportLocation1
+        + "\",\"" + airportLocation2
+        + "\",\"" + airportName1
+        + "\",\"" + airportName2
+        + "\",\"" + takeOffTime.substring(0,10)
+        + "\",\"" + landTime.substring(0,10)
+        + "\",\"" + economyClassTicket
+        + "\",\"" + businessClassTicket
+        + "\",\"" + ectMoney
+        + "\",\"" + bctMoney
+        + "\"" + ')' + ">订票</button>" +
         "</div>" +
         "<div class=\"clearfix\"></div>" +
         "</div>"
@@ -131,18 +153,129 @@ function flightMessageString (airLineCompanyName, flightNo, airportName1,
 }
 
 /**
- * 给按钮添加的点击事件，可以通过航班号信息搜索到航班信息，并且出现弹框为用户提供购买选项
+ *
  * @param flightNo
+ * @param airlineCompanyName
+ * @param planeNo
+ * @param airportLocation1
+ * @param airportLocation2
+ * @param airportName1
+ * @param airportName2
+ * @param takeOffTime
+ * @param landTime
+ * @param economyClassTicket
+ * @param businessClassTicket
+ * @param ectMoney
+ * @param bctMoney
  */
-function addClickToButton(flightNo) {
+function addClickToButton(flightNo, airlineCompanyName, planeNo,
+                          airportLocation1, airportLocation2,
+                          airportName1, airportName2,
+                          takeOffTime, landTime,
+                          economyClassTicket, businessClassTicket,
+                          ectMoney, bctMoney) {
     const account = getAccount()
 
     if(account==null || account === '') {
         document.location.href = "login.html"
     } else {
-        document.getElementById('buykk').style.display = 'flex';
-        document.getElementById('flightNo').innerText = flightNo
 
+        let html = "<div class=\"buykk-flight-info\">\n" +
+            "<p><span>航班号：</span><span>" +
+            flightNo +
+            "</span></p>" +
+            "<p><span>航空公司：</span><span>" +
+            airlineCompanyName +
+            "</span></p>" +
+            "<p><span>机型：</span><span>" +
+            planeNo +
+            "</span></p>" +
+            "<table>" +
+            "<colgroup>" +
+            "<col style=\"width: 33%\">" +
+            "<col style=\"width: 34%\">" +
+            "<col style=\"width: 33%\">" +
+            "</colgroup>" +
+            "<tbody>" +
+            "<tr>" +
+            "<td>" +
+            "<div>" +
+            "<p>" +
+            airportLocation1 +
+            "</p>" +
+            "<p>" +
+            airportName1 +
+            "</p>" +
+            "<p>" +
+            takeOffTime +
+            "</p>" +
+            "</div>\n" +
+            "</td>\n" +
+            "<td><p>飞往</p></td>\n" +
+            "<td>" +
+            "<div>" +
+            "<p>" +
+            airportLocation2 +
+            "</p>" +
+            "<p>" +
+            airportName2 +
+            "</p>" +
+            "<p>" +
+            landTime +
+            "</p>" +
+            "</div>" +
+            "</td>" +
+            "</tr>" +
+            "</tbody>" +
+            "</table>" +
+            "</div>"
 
+        html = html +
+            "<div class=\"buykk-cabin-info\">" +
+            "<label for=\"cabin-select\">选择舱位：</label>" +
+            "<select id=\"cabin-select\">"
+
+        if (economyClassTicket === 0) {
+            html = html +
+                "<option value=\"经济舱\" disabled=\"disabled\">经济舱(售空)</option>" +
+                "<option value=\"商务舱\">商务舱/头等舱  售价: ￥" + bctMoney + "</option>"
+        } else if (businessClassTicket === 0) {
+            html = html +
+                "<option value=\"经济舱\">经济舱        售价: ￥" + ectMoney + "</option>" +
+                "<option value=\"商务舱\" disabled=\"disabled\">商务舱/头等舱(售空)</option>"
+        } else {
+            html = html +
+                "<option value=\"经济舱\">经济舱        售价: ￥" + ectMoney + "</option>" +
+                "<option value=\"商务舱\">商务舱/头等舱  售价: ￥" + bctMoney + "</option>"
+        }
+
+        html = html +
+            "</select>\n" +
+            "</div>"
+
+        const xhttp1 = cbAJAX('findPassengerByAccountServlet?account='+account)
+        xhttp1.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+
+                html = html +
+                    "<div class=\"buykk-cabin-info\">" +
+                    "<label for=\"cabin-select\">选择乘客：</label>" +
+                    "<select>"
+
+                let select = ''
+                const message = jQuery.parseJSON(this.responseText)
+                $.each(message, function (i, n) {
+                    select = select + "<option value=\"" + n.pIDNo + "\">" + n.pName + "/" +n.pIDNo+ "</option>"
+                })
+                if (select === '') {
+                    alert("请先登记乘客信息再进行购票操作")
+                    window.location.href = "idMessage.html"
+                } else {
+                    html = html + select + "</select></div>"
+                    document.getElementById('messageFlight').innerHTML = html
+                    document.getElementById('buykk').style.display = 'flex';
+                }
+            }
+        }
     }
 }

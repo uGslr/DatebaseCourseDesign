@@ -1,10 +1,13 @@
 package com.passenger.service.impl;
 
+import com.passenger.entity.passenger;
 import com.passenger.mapper.passengerMapper;
 import com.passenger.service.passengerService;
 import com.utils.SqlSessionFactoryUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+
+import java.util.List;
 
 public class passengerServiceImpl implements passengerService {
     /**
@@ -53,6 +56,17 @@ public class passengerServiceImpl implements passengerService {
         sqlSession.close();
 
         return "success";
+    }
+
+    @Override
+    public List<passenger> findPassengerByAccount(String account) {
+        SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtil.getSqlSessionFactory();
+
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        passengerMapper pm = sqlSession.getMapper(passengerMapper.class);
+
+        return pm.findPassengerByAccount(account);
     }
 
     /**

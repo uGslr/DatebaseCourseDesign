@@ -44,9 +44,9 @@
       			<h3>航班信息</h3>
       			<button class="buykk-close" onclick="document.getElementById('buykk').style.display='none'">关闭</button>
     		</div>
-    		<div class="buykk-body">
+    		<div class="buykk-body" id="messageFlight">
       			<div class="buykk-flight-info">
-        			<p><span>航班号：</span><span id="flightNo">xcvbnm10102309021142</span></p>
+        			<p><span>航班号：</span><span>xcvbnm10102309021142</span></p>
         			<p><span>航空公司：</span><span>东方航空</span></p>
         			<p><span>机型：</span><span>zxcvbnm</span></p>
         			<table>
@@ -79,6 +79,13 @@
       			<div class="buykk-cabin-info">
         			<label for="cabin-select">选择舱位：</label>
         			<select id="cabin-select">
+          				<option value="economy">经济舱</option>
+          				<option value="business">商务舱/头等舱</option>
+        			</select>
+      			</div>
+				<div class="buykk-cabin-info">
+        			<label for="cabin-select">选择舱位：</label>
+        			<select>
           				<option value="economy">经济舱</option>
           				<option value="business">商务舱/头等舱</option>
         			</select>

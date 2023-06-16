@@ -5,6 +5,8 @@ import com.passenger.entity.passenger;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 @Mapper
 public interface passengerMapper {
     passenger findPassenger(@Param("pIDNo") String pIDNo);
@@ -12,4 +14,5 @@ public interface passengerMapper {
     int addPhone(@Param("pIDNo") String pIDNo, @Param("pPhone") String pPhone);
     PandU findConnect(@Param("pIDNo") String pIDNo, @Param("account") String account);
     int addConnect(@Param("pIDNo") String pIDNo, @Param("account") String account);
+    List<passenger> findPassengerByAccount(@Param("account") String account);
 }

@@ -11,7 +11,7 @@
 <!--                and airportLocation2 = #{airportLocation2}-->
 <!--                and takeoffTime between #{time1} and #{time2}-->
         {
-            call procedure_getTicketByMessage (
+            call procedure_getFlightByMessage (
                 #{airportLocation1},
                 #{airportLocation2},
                 #{time1},
@@ -22,7 +22,7 @@
 
     <select id="getFlightByNo">
         {
-            call procedure_getTicketByNo (
+            call procedure_getFlightByNo (
                 #{flightNo}
             )
         }

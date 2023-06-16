@@ -56,7 +56,7 @@ select{
 	text-align: left;
 }
 #buykk {
-    display: flex;
+    display: none;
     position: fixed;
     z-index: 10;
     justify-content: center;
@@ -113,13 +113,13 @@ select{
 	border-collapse: collapse;
 }
 
-td {
+.buykk-flight-info td {
 	padding: 10px;
 	text-align: center;
 }
 
 .buykk-cabin-info select {
-	width: 50%;
+	width: 60%;
 	padding: 0.6em 0.5em;
 	border: none;
 	outline: none;
