@@ -10,7 +10,7 @@ function deLogin () {
     cData += (-1 == null) ? '' : (';expires=' + edate.toUTCString())
     document.cookie = cData
 
-    if (this.innerText == "注册")
+    if (document.getElementById("clearCookie").innerText === "注册")
         window.location.href = "register.html"
     else
         window.location.href = "index.html"
