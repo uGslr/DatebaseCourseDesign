@@ -274,8 +274,14 @@ function addClickToButton(flightNo, airlineCompanyName, planeNo,
                     html = html + select + "</select></div>"
                     document.getElementById('messageFlight').innerHTML = html
                     document.getElementById('buykk').style.display = 'flex';
+
+                    document.getElementById('buykk-confirm').onclick = function () {
+                        confirm (flightNo)
+                    }
                 }
             }
         }
     }
 }
+
+function confirm () {}

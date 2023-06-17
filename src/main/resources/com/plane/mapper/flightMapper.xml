@@ -4,6 +4,34 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.plane.mapper.flightMapper">
+    
+    <insert id="insertTicket">
+        {
+            call procedure_insertTicket (
+                #{flightNo},
+                #{account},
+                #{pIDNo},
+                #{Level1}
+            )
+        }
+    </insert>
+
+    <insert id="insertFlight">
+        {
+            call procedure_insertFlight (
+                #{takeOffTime},
+                #{landTime},
+                #{economyClassTicket},
+                #{businessClassTicket},
+                #{ectMoney},
+                #{bctMoney},
+                #{airlineNo},
+                #{state},
+                #{planeNo}
+            )
+        }
+    </insert>
+
     <select id="getFlightByMessage">
 <!--        select *-->
 <!--        from findFlightMessageAll-->

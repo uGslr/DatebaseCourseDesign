@@ -15,4 +15,19 @@ public interface flightMapper {
     List<flight> getFlightByNo (@Param("flightNo") String flightNo);
 
     List<flight> getFlightAll ();
+
+    void insertTicket (@Param("flightNo") String flightNo,
+                       @Param("account") String account,
+                       @Param("pIDNo") String pIDNo,
+                       @Param("Level1") String Level1);
+
+    void insertFlight (@Param("ticketOffTime") String takeOffTime,
+                       @Param("landTime") String landTime,
+                       @Param("economyClassTicket") int economyClassTicket,
+                       @Param("businessClassTicket") int businessClassTicket,
+                       @Param("ectMoney") float ectMoney,
+                       @Param("bctMoney") float bctMoney,
+                       @Param("airlineNo") String airlineNo,
+                       @Param("state") int state,
+                       @Param("planeNo") String planeNo);
 }

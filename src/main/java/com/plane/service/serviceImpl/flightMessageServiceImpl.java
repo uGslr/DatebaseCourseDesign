@@ -40,12 +40,36 @@ public class flightMessageServiceImpl implements flightMessageService {
     @Override
     public List<flight> getFlightAll() {
 
-         SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtil.getSqlSessionFactory();
+        SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtil.getSqlSessionFactory();
 
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         flightMapper fm = sqlSession.getMapper(flightMapper.class);
 
         return fm.getFlightAll();
+    }
+
+    @Override
+    public void insertTicket(String flightNo, String account, String pIDNo, String Level1) {
+        SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtil.getSqlSessionFactory();
+
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        flightMapper fm = sqlSession.getMapper(flightMapper.class);
+
+        fm.insertTicket(flightNo, account, pIDNo, Level1);
+    }
+
+    @Override
+    public void insertFlight(String takeOffTime, String landTime, int economyClassTicket, int businessClassTicket,
+                             float ectMoney, float bctMoney, String airlineNo, int state, String planeNo) {
+        SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtil.getSqlSessionFactory();
+
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        flightMapper fm = sqlSession.getMapper(flightMapper.class);
+
+        fm.insertFlight(takeOffTime, landTime, economyClassTicket,
+                businessClassTicket, ectMoney, bctMoney, airlineNo, state, planeNo);
     }
 }
