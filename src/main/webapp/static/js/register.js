@@ -168,13 +168,13 @@ function registerRPwdFunction () {
 
     const rPwd = registerPwd.value.trim()
 
-    if( rRPwd == '') {
+    if( rRPwd === '') {
         rRPwdLabel.innerText = '请在此输入密码!'
         rRPwdLabel.style.display = ''
 
         flag = false
-    } else if (rRPwd != rPwd) {
-        rRPwdLabel.innerText = '密码输入错误!'
+    } else if (rRPwd !== rPwd) {
+        rRPwdLabel.innerText = '两次密码输入不一致!'
         rRPwdLabel.style.display = ''
 
         flag = false

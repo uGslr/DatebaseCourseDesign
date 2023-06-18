@@ -39,63 +39,65 @@
 </head>
 <body>
 	<div id="buykk">
-  		<div class="buykk-container">
-    		<div class="buykk-header">
-      			<h3>航班信息</h3>
-      			<button class="buykk-close" onclick="document.getElementById('buykk').style.display='none'">关闭</button>
-    		</div>
-    		<div class="buykk-body" id="messageFlight">
-      			<div class="buykk-flight-info">
-        			<p><span>航班号：</span><span>xcvbnm10102309021142</span></p>
-        			<p><span>航空公司：</span><span>东方航空</span></p>
-        			<p><span>机型：</span><span>zxcvbnm</span></p>
-        			<table>
-          				<colgroup>
-            				<col style="width: 33%">
-            				<col style="width: 34%">
-            				<col style="width: 33%">
-          				</colgroup>
-          				<tbody>
-            				<tr>
-            	  				<td>
-            	    				<div>
-            	      					<p>北京</p>
-            	      					<p>大兴国际机场</p>
-            	      					<p>2021-01-02 16:23</p>
-            	    				</div>
-            	  				</td>
-            	  				<td><p>飞往</p></td>
-            	  				<td>
-            	    				<div>
-            	      					<p>上海</p>
-            	      					<p>浦东国际机场</p>
-            	      					<p>2021-01-02 16:23</p>
-            	    				</div>
-            	  				</td>
-            				</tr>
-          				</tbody>
-        			</table>
-      			</div>
-      			<div class="buykk-cabin-info">
-        			<label for="cabin-select">选择舱位：</label>
-        			<select id="cabin-select">
-          				<option value="economy">经济舱</option>
-          				<option value="business">商务舱/头等舱</option>
-        			</select>
-      			</div>
-				<div class="buykk-cabin-info">
-        			<label for="cabin-select">选择舱位：</label>
-        			<select>
-          				<option value="economy">经济舱</option>
-          				<option value="business">商务舱/头等舱</option>
-        			</select>
-      			</div>
-			</div>
-    		<div class="buykk-footer">
-    		  	<button class="buykk-cancel" onclick="document.getElementById('buykk').style.display='none'">取消</button>
-    		  	<button class="buykk-confirm" id="buykk-confirm">确认购买</button>
-    		</div>
-  		</div>
+		<div class="buykk-on">
+	  		<div class="buykk-container">
+	    		<div class="buykk-header">
+	      			<h3>航班信息</h3>
+	      			<button class="buykk-close" onclick="document.getElementById('buykk').style.display='none'">关闭</button>
+	    		</div>
+	    		<div class="buykk-body" id="messageFlight">
+	      			<div class="buykk-flight-info">
+	        			<p><span>航班号：</span><span>xcvbnm10102309021142</span></p>
+	        			<p><span>航空公司：</span><span>东方航空</span></p>
+	        			<p><span>机型：</span><span>zxcvbnm</span></p>
+	        			<table>
+	          				<colgroup>
+	            				<col style="width: 33%">
+	            				<col style="width: 34%">
+	            				<col style="width: 33%">
+	          				</colgroup>
+	          				<tbody>
+	            				<tr>
+	            	  				<td>
+	            	    				<div>
+	            	      					<p>北京</p>
+	            	      					<p>大兴国际机场</p>
+	            	      					<p>2021-01-02 16:23</p>
+	            	    				</div>
+	            	  				</td>
+	            	  				<td><p>飞往</p></td>
+	            	  				<td>
+	            	    				<div>
+	            	      					<p>上海</p>
+	            	      					<p>浦东国际机场</p>
+	            	      					<p>2021-01-02 16:23</p>
+	            	    				</div>
+	            	  				</td>
+	            				</tr>
+	          				</tbody>
+    	    			</table>
+    	  			</div>
+    	  			<div class="buykk-cabin-info">
+    	    			<label for="cabin-select">选择舱位：</label>
+    	    			<select id="cabin-select">
+    	      				<option value="economy">经济舱</option>
+    	      				<option value="business">商务舱/头等舱</option>
+    	    			</select>
+    	  			</div>
+					<div class="buykk-cabin-info">
+    	    			<label for="cabin-select">选择舱位：</label>
+    	    			<select>
+    	      				<option value="economy">经济舱</option>
+    	      				<option value="business">商务舱/头等舱</option>
+    	    			</select>
+    	  			</div>
+				</div>
+    			<div class="buykk-footer">
+    			  	<button class="buykk-cancel" onclick="document.getElementById('buykk').style.display='none'">取消</button>
+    			  	<button class="buykk-confirm" id="buykk-confirm">确认购买</button>
+    			</div>
+  			</div>
+		</div>
 	</div>
     <!-- header-section-starts -->
 	<div class="header">

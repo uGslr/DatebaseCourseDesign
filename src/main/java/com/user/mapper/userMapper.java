@@ -87,4 +87,6 @@ public interface userMapper {
     void ChangeUserAType(@Param("account") String account,
                       @Param("aType") String aType);
 
+    int changePwd(@Param("account") String account,
+                  @Param("pwd") String pwd);
 }

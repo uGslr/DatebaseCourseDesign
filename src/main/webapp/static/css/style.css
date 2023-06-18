@@ -56,7 +56,12 @@ select{
 	text-align: left;
 }
 #buykk {
-    display: none;
+	display: none;
+}
+#changePassword {
+	display: none;
+}
+.buykk-on {
     position: fixed;
     z-index: 10;
     justify-content: center;
@@ -96,6 +101,12 @@ select{
 
 .buykk-body {
     margin-bottom: 20px;
+}
+.buykk-body input{
+
+}
+.buykk-body .password-label {
+	width: 100px;
 }
 
 .buykk-flight-info {

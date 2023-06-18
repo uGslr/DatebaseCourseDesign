@@ -39,3 +39,11 @@ function cbAJAX(url) {
     return xhttp
 
 }
+
+function clearCookie() {
+    const edate = new Date()
+    edate.setTime(edate.getTime() -1000)
+    let cData = "account" + "=" + ''
+    cData += (-1 == null) ? '' : (';expires=' + edate.toUTCString())
+    document.cookie = cData
+}

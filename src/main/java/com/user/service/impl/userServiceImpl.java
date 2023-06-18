@@ -20,7 +20,32 @@ public class userServiceImpl implements userService {
 
         userMapper um = sqlSession.getMapper(userMapper.class);
 
-        return um.findUserMessage(account);
+        userMessage t = um.findUserMessage(account);
+        sqlSession.close();
+
+        return t;
+    }
+
+    @Override
+    public boolean changePwd(String account, String oldPwd, String newPwd) {
+
+
+        if (!validateLogin(account, oldPwd).equals("")) {
+            SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtil.getSqlSessionFactory();
+
+            SqlSession sqlSession = sqlSessionFactory.openSession();
+
+            userMapper um = sqlSession.getMapper(userMapper.class);
+            int flag = um.changePwd(account, newPwd);
+            System.out.println(flag);
+            if (flag > 0) {
+                sqlSession.commit();
+                sqlSession.close();
+                return true;
+            }
+            sqlSession.close();
+        }
+        return false;
     }
 
     public boolean createNew (String name, String account, String pwd,
@@ -183,7 +208,7 @@ public class userServiceImpl implements userService {
         sqlSession.close();
 
         if (ul == null) {
-            System.out.println("userService: 登录失败");
+            System.out.println("userService: 验证失败 "+account+" "+password);
             return "";
         }
 
