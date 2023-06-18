@@ -13,13 +13,13 @@ public interface flightMessageService {
     );
     public List<flight> getFlightByNo (String flightNo);
     public List<flight> getFlightAll ();
-    public void insertTicket (
+    public boolean insertTicket (
             String flightNo,
             String account,
             String pIDNo,
             String Level1
     );
-    public void insertFlight (
+    public boolean insertFlight (
             String takeOffTime,
             String landTime,
             int economyClassTicket,

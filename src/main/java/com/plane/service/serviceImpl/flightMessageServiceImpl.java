@@ -22,7 +22,10 @@ public class flightMessageServiceImpl implements flightMessageService {
 
         flightMapper fm = sqlSession.getMapper(flightMapper.class);
 
-        return fm.getFlightByMessage(airportLocation1, airportLocation2, time1, time2);
+        List<flight> t = fm.getFlightByMessage(airportLocation1, airportLocation2, time1, time2);
+        sqlSession.close();
+
+        return t;
     }
 
     @Override
@@ -34,7 +37,10 @@ public class flightMessageServiceImpl implements flightMessageService {
 
         flightMapper fm = sqlSession.getMapper(flightMapper.class);
 
-        return fm.getFlightByNo(flightNo);
+        List<flight> t = fm.getFlightByNo(flightNo);
+        sqlSession.close();
+
+        return t;
     }
 
     @Override
@@ -46,22 +52,35 @@ public class flightMessageServiceImpl implements flightMessageService {
 
         flightMapper fm = sqlSession.getMapper(flightMapper.class);
 
+        sqlSession.close();
+
         return fm.getFlightAll();
     }
 
     @Override
-    public void insertTicket(String flightNo, String account, String pIDNo, String Level1) {
+    public boolean insertTicket(String flightNo, String account, String pIDNo, String Level1) {
         SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtil.getSqlSessionFactory();
 
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         flightMapper fm = sqlSession.getMapper(flightMapper.class);
 
-        fm.insertTicket(flightNo, account, pIDNo, Level1);
+        try {
+            fm.insertTicket("ticketNo",flightNo, account, pIDNo, Level1);
+            sqlSession.commit();
+            sqlSession.close();
+        } catch (Exception e) {
+            sqlSession.close();
+            System.out.println("flightMessageService:error");
+            System.out.println(e);
+            return false;
+        }
+
+        return true;
     }
 
     @Override
-    public void insertFlight(String takeOffTime, String landTime, int economyClassTicket, int businessClassTicket,
+    public boolean insertFlight(String takeOffTime, String landTime, int economyClassTicket, int businessClassTicket,
                              float ectMoney, float bctMoney, String airlineNo, int state, String planeNo) {
         SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtil.getSqlSessionFactory();
 
@@ -69,7 +88,18 @@ public class flightMessageServiceImpl implements flightMessageService {
 
         flightMapper fm = sqlSession.getMapper(flightMapper.class);
 
-        fm.insertFlight(takeOffTime, landTime, economyClassTicket,
+        try {
+            fm.insertFlight(takeOffTime, landTime, economyClassTicket,
                 businessClassTicket, ectMoney, bctMoney, airlineNo, state, planeNo);
+            sqlSession.commit();
+        } catch (Exception e) {
+            sqlSession.commit();
+            sqlSession.close();
+            System.out.println("flightMessageService:error");
+            System.out.println(e);
+            return false;
+        }
+
+        return true;
     }
 }

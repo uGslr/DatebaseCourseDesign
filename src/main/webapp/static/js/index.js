@@ -181,7 +181,7 @@ function addClickToButton(flightNo, airlineCompanyName, planeNo,
     } else {
 
         let html = "<div class=\"buykk-flight-info\">\n" +
-            "<p><span>航班号：</span><span>" +
+            "<p><span>航班号：</span><span id=\"flightNo\">" +
             flightNo +
             "</span></p>" +
             "<p><span>航空公司：</span><span>" +
@@ -253,14 +253,14 @@ function addClickToButton(flightNo, airlineCompanyName, planeNo,
             "</select>\n" +
             "</div>"
 
-        const xhttp1 = cbAJAX('findPassengerByAccountServlet?account='+account)
-        xhttp1.onreadystatechange = function () {
+        const xhttp = cbAJAX('findPassengerByAccountServlet?account='+account)
+        xhttp.onreadystatechange = function () {
             if (this.readyState === 4 && this.status === 200) {
 
                 html = html +
                     "<div class=\"buykk-cabin-info\">" +
                     "<label for=\"cabin-select\">选择乘客：</label>" +
-                    "<select>"
+                    "<select id=\"pIDNo\">"
 
                 let select = ''
                 const message = jQuery.parseJSON(this.responseText)
@@ -273,15 +273,28 @@ function addClickToButton(flightNo, airlineCompanyName, planeNo,
                 } else {
                     html = html + select + "</select></div>"
                     document.getElementById('messageFlight').innerHTML = html
-                    document.getElementById('buykk').style.display = 'flex';
-
                     document.getElementById('buykk-confirm').onclick = function () {
-                        confirm (flightNo)
+                        confirm(flightNo, account)
                     }
+                    document.getElementById('buykk').style.display = 'flex';
                 }
             }
         }
     }
 }
 
-function confirm () {}
+function confirm (flightNo, account) {
+    const pIDNo = document.getElementById('pIDNo').value.trim()
+    const Level1 = document.getElementById('cabin-select').value.trim()
+    const xhttp = cbAJAX('bookingTicketServlet?flightNo='+flightNo+'&account='+account+'&pIDNo='+pIDNo+'&Level1='+Level1)
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            if (this.responseText === 'true') {
+                window.location.href = 'index.html'
+                alert("订票成功")
+            } else {
+                alert("订票失败")
+            }
+        }
+    }
+}

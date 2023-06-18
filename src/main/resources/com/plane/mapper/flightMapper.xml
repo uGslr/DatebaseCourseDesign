@@ -14,6 +14,8 @@
                 #{Level1}
             )
         }
+<!--        insert into ticket (flightNo, account, pIDNo, ticketNo, [Level])-->
+<!--        values(#{flightNo}, #{account}, #{pIDNo}, #{ticketNo}, #{Level1})-->
     </insert>
 
     <insert id="insertFlight">

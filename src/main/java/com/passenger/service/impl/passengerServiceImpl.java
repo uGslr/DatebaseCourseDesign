@@ -66,7 +66,10 @@ public class passengerServiceImpl implements passengerService {
 
         passengerMapper pm = sqlSession.getMapper(passengerMapper.class);
 
-        return pm.findPassengerByAccount(account);
+        List<passenger> t = pm.findPassengerByAccount(account);
+        sqlSession.close();
+
+        return t;
     }
 
     /**

@@ -16,7 +16,8 @@ public interface flightMapper {
 
     List<flight> getFlightAll ();
 
-    void insertTicket (@Param("flightNo") String flightNo,
+    void insertTicket (@Param("ticketNo") String ticketNo,
+                       @Param("flightNo") String flightNo,
                        @Param("account") String account,
                        @Param("pIDNo") String pIDNo,
                        @Param("Level1") String Level1);

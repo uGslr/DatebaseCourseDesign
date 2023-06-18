@@ -159,8 +159,11 @@ public class userServiceImpl implements userService {
 
         userMapper um = sqlSession.getMapper(userMapper.class);
 
+        boolean t = um.findUserMessage(account) != null;
+        sqlSession.close();
+
         //返回账户是否为空
-        return um.findUserMessage(account) != null;
+        return t;
     }
 
     @Override
