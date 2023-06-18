@@ -188,3 +188,16 @@ function fun_IMB () {
         }
     }
 }
+
+document.getElementById('returnButton').onclick = function () {
+    document.getElementById('message1').style.display = 'flex'
+    document.getElementById('message2').style.display = 'none'
+    document.getElementById('showPassengerModel').style.display = 'flex'
+    document.getElementById('addPassengerModel').style.display = 'none'
+}
+document.getElementById('addPassengerButton').onclick = function () {
+    document.getElementById('message1').style.display = 'none'
+    document.getElementById('message2').style.display = 'flex'
+    document.getElementById('showPassengerModel').style.display = 'none'
+    document.getElementById('addPassengerModel').style.display = 'flex'
+}

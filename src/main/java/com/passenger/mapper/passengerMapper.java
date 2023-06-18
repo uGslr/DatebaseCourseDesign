@@ -15,4 +15,5 @@ public interface passengerMapper {
     PandU findConnect(@Param("pIDNo") String pIDNo, @Param("account") String account);
     int addConnect(@Param("pIDNo") String pIDNo, @Param("account") String account);
     List<passenger> findPassengerByAccount(@Param("account") String account);
+    int deletePassenger(@Param("account") String account, @Param("pIDNo") String pIDNo);
 }

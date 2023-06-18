@@ -5,6 +5,15 @@
 
 <mapper namespace="com.passenger.mapper.passengerMapper">
 
+    <delete id="deletePassenger">
+        {
+            call procedure_deletePassengerForAccount (
+                #{account},
+                #{pIDNo}
+            )
+        }
+    </delete>
+
     <select id="findPassengerByAccount">
         {
             call procedure_findPassengerByAccount (

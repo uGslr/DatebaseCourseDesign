@@ -8,4 +8,5 @@ public interface passengerService {
 
     String newPassenger(String account, String pName, String pIDNoType, String pIDNo, String pPhone);
     List<passenger> findPassengerByAccount(String account);
+    boolean deletePassenger(String account, String pIDNo);
 }

@@ -72,6 +72,21 @@ public class passengerServiceImpl implements passengerService {
         return t;
     }
 
+    @Override
+    public boolean deletePassenger(String account, String pIDNo) {
+        SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtil.getSqlSessionFactory();
+
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        passengerMapper pm = sqlSession.getMapper(passengerMapper.class);
+
+        int t = pm.deletePassenger(account, pIDNo);
+        sqlSession.commit();
+        sqlSession.close();
+
+        return t > 0;
+    }
+
     /**
      * 检测账号书写是否正确
      * @param account

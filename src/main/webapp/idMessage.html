@@ -38,9 +38,11 @@
 	<script src="static/js/deLogin.js"></script>
 	<script src="static/js/function.js"></script>
 	<script src="static/js/loginMessage.js"></script>
+	<script src="static/js/getIdMessage.js"></script>
 	<script>
 		window.onload = function () {
 			needLogin ()
+			loadPassengerMessage()
 		}
 	</script>
 </head>
@@ -67,7 +69,7 @@
 						<li><a href="index.html">首页</a></li>|
 						<li><a href="popular-AirLine.html">特价机票</a></li>|
 						<li><a href="order.html">查看订单</a></li>|
-						<li class="active" style="margin-left: 13px"><a href="idMessage.html">新增乘客</a></li>
+						<li class="active" style="margin-left: 13px"><a href="idMessage.html">乘客信息</a></li>
 						<div class="clearfix"></div>
 					</ul>
 				</div>
@@ -84,16 +86,20 @@
 		</div>
 	</div>
 	<!-- header-section-ends -->
-	<div class="contact-section-page">
-		<div class="contact-head">
+	<div class="contact-section-page" >
+		<div class="contact-head" id="message1">
 		    <div class="container">
-				<h3>添加乘客</h3>
-				<p>请填写实名信息</p>
+				<h3>已登记信息</h3>
+			</div>
+		</div>
+		<div class="contact-head" id="message2">
+		    <div class="container">
+				<h3>新增乘客：请输入乘客信息</h3>
 			</div>
 		</div>
 		<div class="contact_top">
 			<div class="container">
-				<div class="col-md-6 contact_left wow fadeInRight" data-wow-delay="0.4s">
+				<div id="addPassengerModel" class="col-md-6 contact_left wow fadeInRight" data-wow-delay="0.4s">
 <!--					<h4>Contact Form</h4>-->
 					<form>
 						<div class="form_details">
@@ -113,12 +119,34 @@
 							<label id="phoneLabel" style="color: #ac2925;display: none">错误</label>
 							<input type="text" id="phoneInput">
 							<div class="clearfix"> </div>
-							<div id="idMessageButton" class="sub-button wow swing animated" data-wow-delay= "0.4s">
-								<input name="submitButton" type="button" value="提 交 信 息">
+							<div class="sub-button wow swing animated" data-wow-delay= "0.4s">
+								<button id="returnButton" type="button">返回查看</button>
+								<button id="idMessageButton" type="button">提交信息</button>
+							</div>
+<!--							<div id="returnButton" class="sub-button wow swing animated" data-wow-delay= "0.4s">-->
+<!--								<input name="submitButton" type="button" value="返回查看">-->
+<!--							</div>-->
+<!--							<div id="idMessageButton" class="sub-button wow swing animated" data-wow-delay= "0.4s">-->
+<!--								<input name="submitButton" type="button" value="提交信息">-->
+<!--							</div>-->
+						</div>
+					</form>
+				</div>
+				<div id="showPassengerModel" class="col-md-6 contact_left wow fadeInRight" data-wow-delay="0.4s">
+					<form>
+						<div class="form_details">
+							<div id="idMessage">
+								<label>李敬儒 <a>删除</a></label>
+								<input type="text" readonly="readonly" value="3203***********217" style="border: rgba(255,255,255,0)">
+							</div>
+							<div class="clearfix"> </div>
+							<div class="sub-button wow swing animated" data-wow-delay= "0.4s">
+								<button id="addPassengerButton" type="button">新增乘客</button>
 							</div>
 						</div>
 					</form>
 				</div>
+<!--				右边的飞机图片-->
 				<div class="col-md-6 company-right wow fadeInLeft" data-wow-delay="0.4s">
 					<br/><br/><br/><br/><br/><br/>
 					<div class="contact-map">
