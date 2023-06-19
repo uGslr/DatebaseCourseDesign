@@ -60,8 +60,7 @@ public class flightServiceImpl implements flightMService {
     }
 
     @Override
-    public boolean insertFlight(int economyClassTicket, int businessClassTicket,
-                             float ectMoney, float bctMoney, String airlineNo, int state, String planeNo) {
+    public boolean insertFlight(float ectMoney, float bctMoney, String airlineNo, String planeNo) {
         SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtil.getSqlSessionFactory();
 
         SqlSession sqlSession = sqlSessionFactory.openSession();
@@ -90,6 +89,8 @@ public class flightServiceImpl implements flightMService {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         flightMapper fm = sqlSession.getMapper(flightMapper.class);
+
+        System.out.println(flightNo+" "+takeOffTime+" "+landTime);
 
         int t = fm.changeFlightTime(flightNo, takeOffTime, landTime);
 

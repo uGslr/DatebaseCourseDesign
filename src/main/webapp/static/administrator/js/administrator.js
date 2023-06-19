@@ -51,7 +51,10 @@ function flightMessageString (airLineCompanyName, flightNo, airportName1,
     const nowTime = new Date(dateTime).toISOString().substring(0, 16) // 精确到分钟
     return "<tr>" +
         "<td>" +
-        "<input class=\"form-check-input m-0 align-middle\" type=\"checkbox\" aria-label=\"Select invoice\">" +
+        "<input class=\"form-check-input m-0 align-middle checkInput\" " +
+        "value=\""+flightNo+"\" " +
+        "type=\"checkbox\" " +
+        "aria-label=\"Select invoice\">" +
         "</td>" +
         "<td><span class=\"text-secondary\">" + flightNo + "</span></td>" +
         "<td><a href=\"invoice.html\" class=\"text-reset\" tabindex=\"-1\">" +
@@ -64,21 +67,18 @@ function flightMessageString (airLineCompanyName, flightNo, airportName1,
         airportName2 +
         "</td>" +
         "<td>" +
-        "<input class='administrator-datetime-local' type=\"datetime-local\" min=\""+ nowTime +"\" value=\""+takeOffTime+"\">" +
+        "<input class='administrator-datetime-local " + flightNo + " ' " +
+        "type=\"datetime-local\" min=\""+ nowTime +"\" value=\""+takeOffTime+"\">" +
         "</td>" +
         "<td>" +
-        "<input class='administrator-datetime-local' type=\"datetime-local\" min=\""+ nowTime +"\" value=\""+landTime+"\">" +
+        "<input class='administrator-datetime-local " + flightNo + " ' " +
+        "type=\"datetime-local\" min=\""+ nowTime +"\" value=\""+landTime+"\">" +
         "</td>" +
         "<td>" +
         economyClassTicket + "张 / ￥" + ectMoney +
         "</td>" +
         "<td>" +
         businessClassTicket + "张 / ￥" + bctMoney +
-        "</td>" +
-        "<td class=\"text-end\">" +
-        "<span class=\"dropdown\">" +
-        "<button class=\"btn align-text-top\" onclick='' '>修改</button>" +
-        "</span>" +
         "</td>" +
         "</tr>"
 }
@@ -133,6 +133,30 @@ function toAdministratorNewCompany () {
     document.getElementById("administrator-newCompany").style.display = 'flex'
 }
 
-function changeFlightMessage () {
+function changeFlightTime (flightNo, takeOffTime, landTime) {
+    if (confirm('修改航班号'+flightNo+'的起飞时间为:'+takeOffTime+' 预计降落时间为:'+landTime+' 是否修改？')) {
+        const xhttp = cbAJAX('changeFlightTimeServlet?flightNo='+flightNo+'&takeOffTime='+takeOffTime+'&landTime='+landTime)
+        xhttp.onreadystatechange = function () {
+            if (this.status===200&&this.readyState===4) {
+                if (this.responseText==='true') {
+                    alert('修改成功')
+                } else {
+                    alert('修改失败')
+                }
+            }
+        }
+    }
+}
 
+function changeButtonFunction () {
+    const checkBox = document.getElementsByClassName('checkInput')
+    for (let i=0; i<checkBox.length; i++) {
+        if (checkBox[i].checked) {
+            const toChangeTime = document.getElementsByClassName(checkBox[i].value)
+            const takeOffTime = toChangeTime[0].value.substring(0, 10)+' '+toChangeTime[0].value.substring(11, 16)
+            const landTime = toChangeTime[1].value.substring(0, 10)+' '+toChangeTime[1].value.substring(11, 16)
+
+            changeFlightTime (checkBox[i].value, takeOffTime, landTime)
+        }
+    }
 }

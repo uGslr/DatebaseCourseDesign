@@ -15,12 +15,9 @@ public interface flightMService {
     public List<flight> getFlightAll ();
 
     public boolean insertFlight (
-            int economyClassTicket,
-            int businessClassTicket,
             float ectMoney,
             float bctMoney,
             String airlineNo,
-            int state,
             String planeNo
     );
 
