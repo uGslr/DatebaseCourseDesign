@@ -336,6 +336,66 @@ button[disabled] {
 	text-align: right;
 }
 
+/* hotCity页面整体样式开始 */
+.hotCity body {
+	font-family: Arial, sans-serif;
+	background-color: #f2f2f2;
+	margin: 0;
+	padding: 0;
+}
+/* 标题样式 */
+.hotCity h1 {
+	text-align: center;
+	color: #333;
+	margin-top: 50px;
+}
+/* 推荐卡片样式 */
+.hotCity .card {
+	width: 90%;
+	max-width: 1200px;
+	margin: 50px auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #fff;
+	box-shadow: 0 0 20px rgba(0,0,0,0.15);
+	border-radius: 10px;
+}
+.hotCity .card img {
+	width: 100%;
+	height: 300px;
+	object-fit: cover;
+	border-radius: 10px 10px 0 0;
+}
+.hotCity .card h2 {
+	margin: 20px;
+	color: #333;
+	font-size: 28px;
+}
+.hotCity .card p {
+	margin: 20px;
+	color: #666;
+	font-size: 18px;
+	line-height: 1.5;
+	width: 60%;
+}
+.hotCity .card a {
+	display: block;
+	padding: 10px 20px;
+	background-color: #333;
+	color: #fff;
+	font-size: 18px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	margin: 0 auto 20px;
+}
+.hotCity .card a:hover {
+	background-color: #555;
+}
+/* hotCity页面整体样式结束 */
+
 .header {
 	border-top: 3px solid #5BBD50;
 }

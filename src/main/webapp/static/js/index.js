@@ -63,7 +63,7 @@ document.getElementById('searchButton').onclick = function () {
             const message = jQuery.parseJSON(this.responseText)
             let inner = ''
             $.each(message, function (i, n) {
-                inner = inner + flightMessageString(
+                inner += flightMessageString(
                     n.airlineCompanyName,
                     n.flightNo,
                     n.planeNo,

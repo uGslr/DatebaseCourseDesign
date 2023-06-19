@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>hotCity</title>
+	<link href="static/css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="static/js/jquery.min.js"></script>
+	<!-- Custom Theme files -->
+	<link href="static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- Custom Theme files -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="application/x-javascript">
+		addEventListener("load", function() {
+			setTimeout(hideURLbar, 0);
+			}, false);
+		function hideURLbar(){
+			window.scrollTo(0,1);
+		}
+	</script>
+	<!--Animation-->
+	<script src="static/js/wow.min.js"></script>
+	<link href="static/css/animate.css" rel='stylesheet' type='text/css' />
+	<script>
+		new WOW().init();
+	</script>
+	<script type="text/javascript" src="static/js/move-top.js"></script>
+	<script type="text/javascript" src="static/js/easing.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event){
+				event.preventDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
+			});
+		});
+	</script>
+
+	<script src="static/js/deLogin.js"></script>
+	<script src="static/js/function.js"></script>
+	<script src="static/js/loginMessage.js"></script>
+	<script src="static/js/hotCity.js"></script>
+	<script>
+		window.onload = function () {
+			notNeedLogin()
+			loadHostCity ()
+		}
+	</script>
+</head>
+<body>
+	<!-- header-section-starts -->
+	<div class="header">
+		<div class="container">
+			<div class="top-header">
+				<div class="logo">
+					<a href="index.html"><img src="static/images/logo3.png" class="img-responsive" alt="" /></a>
+				</div>
+				<div class="queries">
+					<p>联 系 方 式<span>189 1347 5590 </span><label>(12AM to 12PM)</label></p>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+
+		<!-- 导航栏 -->
+		<div class="menu-bar">
+			<div class="container">
+				<div class="top-menu">
+					<ul>
+						<li><a href="index.html">首页</a></li>|
+						<li class="active" style="margin-left: 13px"><a href="hotCity.html">热门城市</a></li>|
+						<li><a href="order.html">查看订单</a></li>|
+						<li><a href="idMessage.html">乘客信息</a></li>
+						<div class="clearfix"></div>
+					</ul>
+				</div>
+				<div class="login-section">
+					<ul>
+						<li id="loginMessage"><a href="login.html">登录</a>  </li> |
+						<li><a id="clearCookie" onclick="deLogin()">注册</a> </li> |
+						<li><a href="#">帮助</a></li>
+						<div class="clearfix"></div>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!-- header-section-ends -->
+	<!-- content-section-starts -->
+	<div class="Popular-Restaurants-content">
+		<div class="hotCity" id="hostCity">
+<!--    		<div class="card">-->
+<!--      			<img src="https://picsum.photos/1200/300/?random=1" alt="巴黎">-->
+<!--      			<h2>巴黎</h2>-->
+<!--      			<p></p>-->
+<!--      			<a href="#">了解更多</a>-->
+<!--    		</div>-->
+<!--    		<div class="card">-->
+<!--      			<img src="https://picsum.photos/1200/300/?random=2" alt="东京">-->
+<!--      			<h2>东京</h2>-->
+<!--      			<p></p>-->
+<!--      			<a href="#">了解更多</a>-->
+<!--    		</div>-->
+<!--    		<div class="card">-->
+<!--      			<img src="https://picsum.photos/1200/300/?random=3" alt="曼谷">-->
+<!--      			<h2>曼谷</h2>-->
+<!--      			<p></p>-->
+<!--      			<a href="#">了解更多</a>-->
+<!--    		</div>-->
+		</div>
+	</div>
+	<!-- content-section-ends -->
+	<!-- footer-section-starts -->
+	<div class="footer">
+		<div class="container">
+			<p class="wow fadeInLeft" data-wow-delay="0.4s">数据库课程设计-机票实名销售系统 <a>20211499 202105Z 李敬儒</a></p>
+		</div>
+	</div>
+	<!-- footer-section-ends -->
+	<script type="text/javascript">
+		  $(document).ready(function() {
+			  $().UItoTop({ easingType: 'easeOutQuart' });
+
+		  });
+	  </script>
+
+	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+</body>
+</html>

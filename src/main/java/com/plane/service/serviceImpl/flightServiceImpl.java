@@ -1,6 +1,7 @@
 package com.plane.service.serviceImpl;
 
 import com.plane.entity.airline;
+import com.plane.entity.city;
 import com.plane.entity.flight;
 import com.plane.entity.plane;
 import com.plane.mapper.flightMapper;
@@ -145,6 +146,44 @@ public class flightServiceImpl implements flightService {
         sqlSession.close();
 
         return t > 0;
+    }
+
+    @Override
+    public boolean insertAirlineCompany(String airlineCompanyName, String airlineCompanyNo) {
+        SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtil.getSqlSessionFactory();
+
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        flightMapper fm = sqlSession.getMapper(flightMapper.class);
+
+        int t = 0;
+
+        try {
+            t = fm.insertAirlineCompany(airlineCompanyName, airlineCompanyNo);
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+
+        sqlSession.commit();
+        sqlSession.close();
+
+        return t > 0;
+    }
+
+    @Override
+    public List<city> findHotCity() {
+        SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtil.getSqlSessionFactory();
+
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        flightMapper fm = sqlSession.getMapper(flightMapper.class);
+
+        List<city> t = fm.findHotCity();
+
+        sqlSession.close();
+
+        return t;
     }
 
 }

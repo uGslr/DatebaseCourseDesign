@@ -1,6 +1,7 @@
 package com.plane.service;
 
 import com.plane.entity.airline;
+import com.plane.entity.city;
 import com.plane.entity.flight;
 import com.plane.entity.plane;
 
@@ -30,4 +31,8 @@ public interface flightService {
     public List<airline> findAirline ();
 
     public boolean updateFlightNoMessage (String flightNo);
+
+    public boolean insertAirlineCompany (String airlineCompanyName, String airlineCompanyNo);
+
+    public List<city> findHotCity ();
 }
