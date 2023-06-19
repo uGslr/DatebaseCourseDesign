@@ -4,6 +4,15 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.plane.mapper.flightMapper">
+    
+    <select id="updateFlightNoMessage">
+<!--        这里存储过程用select的原因是在存储过程中， 用select 1和select 0 判断该存储过程有没有进入我们需要的判断分支   -->
+        {
+            call procedure_updateFlightNoMessage (
+                #{flightNo}
+            )
+        }
+    </select>
 
     <select id="findAirline">
         select *

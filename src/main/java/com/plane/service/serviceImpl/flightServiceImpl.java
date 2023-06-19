@@ -131,4 +131,20 @@ public class flightServiceImpl implements flightService {
         return t;
     }
 
+    @Override
+    public boolean updateFlightNoMessage(String flightNo) {
+        SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtil.getSqlSessionFactory();
+
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        flightMapper fm = sqlSession.getMapper(flightMapper.class);
+
+        int t = fm.updateFlightNoMessage(flightNo);
+
+        sqlSession.commit();
+        sqlSession.close();
+
+        return t > 0;
+    }
+
 }

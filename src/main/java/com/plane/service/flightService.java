@@ -29,4 +29,5 @@ public interface flightService {
 
     public List<airline> findAirline ();
 
+    public boolean updateFlightNoMessage (String flightNo);
 }

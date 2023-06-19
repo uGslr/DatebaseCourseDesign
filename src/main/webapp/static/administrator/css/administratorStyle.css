@@ -28,26 +28,27 @@
 /*    outline: none;*/
 /*}*/
 
-.addFlight {
+.ad {
     width: 600px;
     padding: 20px;
     margin: 50px auto;
     max-width: 600px;
+    align-items: center;
 }
-.addFlight h1 {
+.ad h1 {
     text-align: center;
     color: #333333;
     margin-top: 0;
     margin-bottom: 25px;
 }
-.addFlight label {
+.ad label {
     display: block;
     font-size: 16px;
     font-weight: bold;
     color: #333333;
     margin-bottom: 10px;
 }
-.addFlight input[type="text"], select {
+.ad input[type="text"], select {
     display: block;
     width: 100%;
     padding: 10px;
@@ -58,7 +59,7 @@
     color: #333333;
     box-sizing: border-box;
 }
-.addFlight button {
+.ad button {
     background-color: #4CAF50;
     color: #ffffff;
     border: none;
@@ -68,6 +69,6 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-.addFlight button:hover {
+.ad button:hover {
     background-color: #E24425;
 }

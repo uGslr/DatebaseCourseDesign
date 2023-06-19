@@ -150,6 +150,28 @@ function changeFlightTime (flightNo, takeOffTime, landTime) {
     }
 }
 
+function updateFlightMessage (flightNo) {
+    const xhttp = cbAJAX('updateFlightNoMessageServlet?flightNo='+flightNo)
+    xhttp.onreadystatechange = function () {
+        if (this.status===200&&this.readyState===4) {
+            if (this.responseText === 'true') {
+                loadFlightMessage()
+            } else {
+                alert(flightNo+"异常")
+            }
+        }
+    }
+}
+
+function updateButtonFunction () {
+    const checkBox = document.getElementsByClassName('checkInput')
+    for (let i=0; i<checkBox.length; i++) {
+        if (checkBox[i].checked) {
+            updateFlightMessage (checkBox[i].value)
+        }
+    }
+}
+
 function changeButtonFunction () {
     const checkBox = document.getElementsByClassName('checkInput')
     for (let i=0; i<checkBox.length; i++) {

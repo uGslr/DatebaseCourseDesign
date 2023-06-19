@@ -42,4 +42,6 @@ public interface flightMapper {
     List<plane> findPlane ();
 
     List<airline> findAirline ();
+
+    int updateFlightNoMessage (@Param("flightNo") String flightNo);
 }

@@ -63,33 +63,95 @@
 		</div>
 	</div>
 	<!-- header-section-ends -->
-    <div id="administrator-newCompany"></div>
-    <div id="administrator-newPlane"></div>
-    <div id="administrator-newAirline"></div>
+    <div id="administrator-newCompany">
+		<div class="ad">
+        	<div class="addFlight">
+		    	<h1>注册航空公司</h1>
+		    	<label for="newCompanyNo">航空公司编号</label>
+		    	<input id="newCompanyNo" type="text">
+				<label style="color: #ac2925;display: none"></label>
+		    	<label for="newCompanyName">航空公司名</label>
+		    	<input id="newCompanyName" type="text">
+				<label style="color: #ac2925;display: none"></label>
+		    	<button id="newCompanyButton">提交</button>
+				<label style="color: #ac2925;display: none"></label>
+	    	</div>
+		</div>
+	</div>
+    <div id="administrator-newPlane">
+		<div class="ad">
+        	<div class="addFlight">
+		    	<h1>添加飞机</h1>
+		    	<label>飞机编号</label>
+		    	<input type="text">
+				<label style="color: #ac2925;display: none"></label>
+		    	<label for="airLineNo">所属航空公司</label>
+		    	<select>
+					<option value="请选择" selected disabled style="display:none;">请选择</option>
+		    		<option value="1">1</option>
+		    		<option value="2">2</option>
+		    	</select>
+				<label>飞机型号</label>
+		    	<input type="text">
+				<label style="color: #ac2925;display: none"></label>
+		    	<label>经济舱座位数</label>
+		    	<input type="text">
+				<label style="color: #ac2925;display: none"></label>
+				<label>商务舱座位数</label>
+		    	<input type="text">
+				<label style="color: #ac2925;display: none"></label>
+		    	<button>提交</button>
+				<label style="color: #ac2925;display: none"></label>
+	    	</div>
+		</div>
+	</div>
+    <div id="administrator-newAirline">
+		<div class="ad">
+        	<div class="addFlight">
+		    	<h1>新建航线</h1>
+		    	<label>端点机场1</label>
+		    	<select>
+					<option value="请选择" selected disabled style="display:none;">请选择</option>
+		    		<option value="1">1</option>
+		    		<option value="2">2</option>
+		    	</select>
+		    	<label>端点机场2</label>
+		    	<select>
+					<option value="请选择" selected disabled style="display:none;">请选择</option>
+		    		<option value="1">1</option>
+		    		<option value="2">2</option>
+		    	</select>
+		    	<button>提交</button>
+				<label style="color: #ac2925;display: none"></label>
+	    	</div>
+		</div>
+	</div>
     <div id="administrator-newFlight">
-        <div class="addFlight">
-		    <h1>新航班登记</h1>
-		    <label for="ectMoney">经济舱机票售价</label>
-		    <input type="text" id="ectMoney">
-			<label id="ectLabel" style="color: #ac2925;display: none"></label>
-		    <label for="bctMoney">商务舱机票售价</label>
-		    <input type="text" id="bctMoney">
-			<label id="bctLabel" style="color: #ac2925;display: none"></label>
-		    <label for="airLineNo">飞行航线</label>
-		    <select id="airlineNo">
-				<option value="请选择" selected disabled style="display:none;">请选择</option>
-		    	<option value="1">1</option>
-		    	<option value="2">2</option>
-		    </select>
-		    <label for="planeNo">飞行飞机</label>
-		    <select id="planeNo">
-				<option value="请选择" selected disabled style="display:none;">请选择</option>
-		    	<option value="1">1</option>
-		    	<option value="2">2</option>
-		    </select>
-		    <button id="addFlightButton">提交</button>
-			<label id="addFlightLabel" style="color: #ac2925;display: none"></label>
-	    </div>
+		<div class="ad">
+        	<div class="addFlight">
+		    	<h1>新航班登记</h1>
+		    	<label for="ectMoney">经济舱机票售价</label>
+		    	<input type="text" id="ectMoney">
+				<label id="ectLabel" style="color: #ac2925;display: none"></label>
+		    	<label for="bctMoney">商务舱机票售价</label>
+		    	<input type="text" id="bctMoney">
+				<label id="bctLabel" style="color: #ac2925;display: none"></label>
+		    	<label for="airLineNo">飞行航线</label>
+		    	<select id="airlineNo">
+					<option value="请选择" selected disabled style="display:none;">请选择</option>
+		    		<option value="1">1</option>
+		    		<option value="2">2</option>
+		    	</select>
+		    	<label for="planeNo">飞行飞机</label>
+		    	<select id="planeNo">
+					<option value="请选择" selected disabled style="display:none;">请选择</option>
+		    		<option value="1">1</option>
+		    		<option value="2">2</option>
+		    	</select>
+		    	<button id="addFlightButton">提交</button>
+				<label id="addFlightLabel" style="color: #ac2925;display: none"></label>
+	    	</div>
+		</div>
     </div>
     <div id="administrator-ticketStrategy"></div>
 	<div class="col-12" >
@@ -127,7 +189,7 @@
                     </tbody>
                 </table>
                 <button class="btn align-text-top" onclick="changeButtonFunction ()" style="float: right">修改已选</button>
-                <button class="btn align-text-top" onclick="changeButtonFunction ()" style="float: right">更新航班</button>
+                <button class="btn align-text-top" onclick="updateButtonFunction ()" style="float: right">更新航班</button>
             </div>
 <!--            <div class="card-footer d-flex align-items-center">-->
 <!--                <p class="m-0 text-secondary">Showing <span>1</span> to <span>8</span> of <span>16</span> entries</p>-->
@@ -154,7 +216,7 @@
 	<!-- footer-section-starts -->
 	<div class="footer">
 		<div class="container">
-			<p class="wow fadeInLeft" data-wow-delay="0.4s">数据库课程设计-机票实名销售系统 <a>20211499 202105Z 李敬儒</a></p>
+			<p>数据库课程设计-机票实名销售系统 <a>20211499 202105Z 李敬儒</a></p>
 		</div>
 	</div>
 	<!-- footer-section-ends -->
