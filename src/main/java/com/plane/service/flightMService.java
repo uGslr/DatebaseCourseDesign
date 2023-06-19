@@ -1,11 +1,11 @@
 package com.plane.service;
 
 import com.plane.entity.flight;
-import org.apache.ibatis.annotations.Param;
+import com.plane.entity.ticket;
 
 import java.util.List;
 
-public interface flightMessageService {
+public interface flightMService {
     public List<flight> getFlightByMessage (
             String airportLocation1,
             String airportLocation2,
@@ -13,12 +13,7 @@ public interface flightMessageService {
     );
     public List<flight> getFlightByNo (String flightNo);
     public List<flight> getFlightAll ();
-    public boolean insertTicket (
-            String flightNo,
-            String account,
-            String pIDNo,
-            String Level1
-    );
+
     public boolean insertFlight (
             int economyClassTicket,
             int businessClassTicket,
@@ -30,4 +25,5 @@ public interface flightMessageService {
     );
 
     public boolean changeFlightTime(String flightNo, String takeOffTime, String landTime);
+
 }

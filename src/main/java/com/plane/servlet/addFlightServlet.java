@@ -1,9 +1,5 @@
 package com.plane.servlet;
 
-import com.plane.service.flightMessageService;
-import com.plane.service.serviceImpl.flightMessageServiceImpl;
-import com.utils.TranscodingUtil;
-
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;

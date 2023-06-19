@@ -43,7 +43,7 @@ public class idMessageServlet extends HttpServlet {
 
         Cookie[] cookies = req.getCookies();
         if (cookies == null) {
-            System.out.println("idMessageServlet: cookie寻找失败");
+            System.out.println("登记新乘客失败: cookie寻找失败");
 
             resp.getWriter().write("unknown");
         } else {

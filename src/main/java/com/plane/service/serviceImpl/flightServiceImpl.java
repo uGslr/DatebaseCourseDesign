@@ -1,15 +1,16 @@
 package com.plane.service.serviceImpl;
 
 import com.plane.entity.flight;
+import com.plane.entity.ticket;
 import com.plane.mapper.flightMapper;
-import com.plane.service.flightMessageService;
+import com.plane.service.flightMService;
 import com.utils.SqlSessionFactoryUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import java.util.List;
 
-public class flightMessageServiceImpl implements flightMessageService {
+public class flightServiceImpl implements flightMService {
 
     @Override
     public List<flight> getFlightByMessage(String airportLocation1, String airportLocation2, String time) {
@@ -59,28 +60,6 @@ public class flightMessageServiceImpl implements flightMessageService {
     }
 
     @Override
-    public boolean insertTicket(String flightNo, String account, String pIDNo, String Level1) {
-        SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtil.getSqlSessionFactory();
-
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-
-        flightMapper fm = sqlSession.getMapper(flightMapper.class);
-
-        try {
-            fm.insertTicket("ticketNo",flightNo, account, pIDNo, Level1);
-            sqlSession.commit();
-            sqlSession.close();
-        } catch (Exception e) {
-            sqlSession.close();
-            System.out.println("flightMessageService:error");
-            System.out.println(e);
-            return false;
-        }
-
-        return true;
-    }
-
-    @Override
     public boolean insertFlight(int economyClassTicket, int businessClassTicket,
                              float ectMoney, float bctMoney, String airlineNo, int state, String planeNo) {
         SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtil.getSqlSessionFactory();
@@ -92,10 +71,11 @@ public class flightMessageServiceImpl implements flightMessageService {
         try {
             fm.insertFlight(ectMoney, bctMoney, airlineNo, planeNo);
             sqlSession.commit();
+            sqlSession.close();
         } catch (Exception e) {
             sqlSession.commit();
             sqlSession.close();
-            System.out.println("flightMessageService:error");
+            System.out.println("flightMService:error");
             System.out.println(e);
             return false;
         }
@@ -113,6 +93,10 @@ public class flightMessageServiceImpl implements flightMessageService {
 
         int t = fm.changeFlightTime(flightNo, takeOffTime, landTime);
 
+        sqlSession.commit();
+        sqlSession.close();
+
         return t > 0;
     }
+
 }

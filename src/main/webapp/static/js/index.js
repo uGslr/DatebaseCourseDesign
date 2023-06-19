@@ -153,6 +153,8 @@ function flightMessageString (airlineCompanyName, flightNo, planeNo,
 }
 
 /**
+ * 搜随完成后会出现一个弹窗（伪）
+ * 本函数用来修弹窗内容
  *
  * @param flightNo
  * @param airlineCompanyName
@@ -290,7 +292,7 @@ function confirm (flightNo, account) {
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             if (this.responseText === 'true') {
-                window.location.href = 'index.html'
+                document.getElementById('buykk').style.display = 'none';
                 alert("订票成功")
             } else {
                 alert("订票失败")

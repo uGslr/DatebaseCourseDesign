@@ -1,7 +1,7 @@
 package com.plane.servlet;
 
-import com.plane.service.flightMessageService;
-import com.plane.service.serviceImpl.flightMessageServiceImpl;
+import com.plane.service.flightMService;
+import com.plane.service.serviceImpl.flightServiceImpl;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -16,7 +16,7 @@ public class changeFlightTimeServlet extends HttpServlet {
         String takeOffTime = request.getParameter("takeOffTime").trim();
         String landTime = request.getParameter("landTime").trim();
 
-        flightMessageService fs = new flightMessageServiceImpl();
+        flightMService fs = new flightServiceImpl();
 
         if (fs.changeFlightTime(flightNo, takeOffTime, landTime))
             response.getWriter().write("true");

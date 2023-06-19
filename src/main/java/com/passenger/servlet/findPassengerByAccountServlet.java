@@ -18,7 +18,8 @@ public class findPassengerByAccountServlet extends HttpServlet {
 
         passengerService ps = new passengerServiceImpl();
 
-        System.out.println("findPassengerByAccountServlet:findMessage");
+        System.out.print("findPassengerByAccountServlet:");
+        System.out.println("正在寻找账号"+account+"所有乘客登记信息");
 
         // 将其转化为json数据 序列化
         String jsonUm = JSON.toJSONString(ps.findPassengerByAccount(account));

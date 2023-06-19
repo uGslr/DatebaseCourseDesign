@@ -52,6 +52,11 @@ select{
 	/*text-align-last: center; !* 文本居中*!*/
 }
 
+button[disabled] {
+  pointer-events: none;
+  background-color: #ccc;
+}
+
 #buykk {
 	display: none;
 }
@@ -263,6 +268,73 @@ select{
 /*#buykk-button button:hover{*/
 /*	color:#5BBD50;*/
 /*}*/
+
+.ticketMessage {
+	font-family: Arial, sans-serif;
+	background-color: #f2f2f2;
+}
+
+.ticketMessage .container {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #fff;
+}
+
+.width80 {
+	width: 80%;
+	margin: 0 auto;
+}
+
+.info-ticketMessage {
+	position: relative;
+	margin-bottom: 40px;
+	padding: 10px;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.1);
+	background-color: #f7f7f7;
+	transition: box-shadow 0.3s ease-in-out;
+}
+
+.info-ticketMessage:hover {
+	box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+.info-ticketMessage h2 {
+	margin-top: 0;
+	font-size: 20px;
+	color: #333;
+	margin-bottom: 15px;
+}
+
+.info-ticketMessage label {
+	display: inline-block;
+	font-size: 14px;
+	line-height: 1.6em;
+	color: #666;
+	margin-right: 15px;
+	margin-bottom: 15px;
+}
+
+.info-ticketMessage button {
+	display: inline-block;
+	padding: 12px 20px;
+	border: none;
+	background: none;
+	color: #007bff;
+	font-size: 16px;
+	cursor: pointer;
+	transition: color 0.3s ease-in-out;
+	float: right;
+}
+
+.info-ticketMessage button:hover {
+	color: #0062cc;
+}
+
+.info-ticketMessage .btn-container {
+	margin-top: 15px;
+	text-align: right;
+}
 
 .header {
 	border-top: 3px solid #5BBD50;

@@ -5,6 +5,20 @@
 
 <mapper namespace="com.plane.mapper.flightMapper">
 
+    <delete id="returnTicket">
+        delete
+        from ticket
+        where ticketNo = #{ticketNo}
+    </delete>
+
+    <select id="findTicket">
+        {
+            call procedure_findTicket (
+                #{account}
+            )
+        }
+    </select>
+
     <update id="changeFlightTime">
         update Flight
         set takeOffTime = #{takeOffTime}, landTime = #{landTime}

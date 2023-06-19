@@ -1,6 +1,7 @@
 package com.plane.mapper;
 
 import com.plane.entity.flight;
+import com.plane.entity.ticket;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -30,4 +31,8 @@ public interface flightMapper {
     int changeFlightTime (@Param("flightNo") String flightNo,
                           @Param("takeOffTime") String takeOffTime,
                           @Param("landTime") String landTime);
+
+    List<ticket> findTicket (@Param("account") String account);
+
+    int returnTicket (@Param("ticketNo") String ticketNo);
 }

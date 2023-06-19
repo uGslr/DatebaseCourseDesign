@@ -1,7 +1,7 @@
 package com.plane.servlet;
 
-import com.plane.service.flightMessageService;
-import com.plane.service.serviceImpl.flightMessageServiceImpl;
+import com.plane.service.flightMService;
+import com.plane.service.serviceImpl.flightServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,6 +16,6 @@ public class getFlightByNoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String flightNo = req.getParameter("flightNo").trim();
 
-        flightMessageService fms = new flightMessageServiceImpl();
+        flightMService fms = new flightServiceImpl();
     }
 }
