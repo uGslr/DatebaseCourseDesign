@@ -2,7 +2,7 @@
 /**
  * 将搜索到的航班信息插入界面
  */
-function insertAllFlightMessage() {
+function loadFlightMessage() {
     const url = 'getFlightAllServlet'
     const xhttp = cbAJAX(url)
 
@@ -43,7 +43,7 @@ function insertAllFlightMessage() {
  * @param businessClassTicket
  * @returns {string}
  */
-function flightMessageString (airLineCompanyName, flightNo, airportName1,
+function flightMessageString (airlineCompanyName, flightNo, airportName1,
                               takeOffTime, airportName2, landTime, ectMoney,
                               economyClassTicket, bctMoney, businessClassTicket) {
 
@@ -58,7 +58,7 @@ function flightMessageString (airLineCompanyName, flightNo, airportName1,
         "</td>" +
         "<td><span class=\"text-secondary\">" + flightNo + "</span></td>" +
         "<td><a href=\"invoice.html\" class=\"text-reset\" tabindex=\"-1\">" +
-        airLineCompanyName +
+        airlineCompanyName +
         "</a></td>" +
         "<td>" +
          airportName1+
@@ -85,6 +85,7 @@ function flightMessageString (airLineCompanyName, flightNo, airportName1,
 
 
 function toAdministratorAllTFlight () {
+    loadFlightMessage()
     document.getElementById("administrator-allFlight").style.display = 'flex'
     document.getElementById("administrator-ticketStrategy").style.display = 'none'
     document.getElementById("administrator-newFlight").style.display = 'none'
@@ -101,6 +102,7 @@ function toAdministratorTicketStrategy () {
     document.getElementById("administrator-newCompany").style.display = 'none'
 }
 function toAdministratorNewFlight () {
+    addOptionForAddFlight ()
     document.getElementById("administrator-allFlight").style.display = 'none'
     document.getElementById("administrator-ticketStrategy").style.display = 'none'
     document.getElementById("administrator-newFlight").style.display = 'flex'
@@ -159,4 +161,41 @@ function changeButtonFunction () {
             changeFlightTime (checkBox[i].value, takeOffTime, landTime)
         }
     }
+}
+
+function loadPlane () {
+    const xhttp = cbAJAX('findPlaneServlet')
+    xhttp.onreadystatechange = function () {
+        if (this.status===200&&this.readyState===4) {
+            const message = jQuery.parseJSON(this.responseText)
+            let select = "<option value=\"请选择\" selected disabled style=\"display:none;\">请选择</option>"
+            $.each(message, function (i, n) {
+                select = select + "<option value=\"" + n.planeNo + "\">" +
+                    n.planeNo + "/所属公司:" +n.airlineCompanyNo+ "</option>"
+            })
+            document.getElementById('planeNo').innerHTML = select
+        }
+    }
+}
+
+function loadAirline () {
+    const xhttp = cbAJAX('findAirlineServlet')
+    xhttp.onreadystatechange = function () {
+        if (this.status===200&&this.readyState===4) {
+            const message = jQuery.parseJSON(this.responseText)
+            let select = "<option value=\"请选择\" selected disabled style=\"display:none;\">请选择</option>"
+            $.each(message, function (i, n) {
+                select = select + "<option value=\"" + "0" + n.airlineNo + "\">" + "从 " +
+                    n.airportName1 + " 前往 " + n.airportName2 + "</option>"
+                select = select + "<option value=\"" + "1" + n.airlineNo + "\">" + "从 " +
+                    n.airportName2 + " 前往 " + n.airportName1 + "</option>"
+            })
+            document.getElementById('airlineNo').innerHTML = select
+        }
+    }
+}
+
+function addOptionForAddFlight () {
+    loadPlane()
+    loadAirline ()
 }

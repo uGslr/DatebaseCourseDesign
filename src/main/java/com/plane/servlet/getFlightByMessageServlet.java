@@ -2,7 +2,7 @@ package com.plane.servlet;
 
 import com.alibaba.fastjson.JSON;
 import com.plane.entity.flight;
-import com.plane.service.flightMService;
+import com.plane.service.flightService;
 import com.plane.service.serviceImpl.flightServiceImpl;
 import com.utils.TimeUtil;
 import com.utils.TranscodingUtil;
@@ -25,7 +25,7 @@ public class getFlightByMessageServlet extends HttpServlet {
 
         System.out.println(airportLocation1+" "+airportLocation2+" "+time);
 
-        flightMService fms = new flightServiceImpl();
+        flightService fms = new flightServiceImpl();
         List<flight> f = fms.getFlightByMessage(airportLocation1, airportLocation2, time);
 
 //        System.out.println(TimeUtil.toDate(time, "yyyy-MM-dd").compareTo(TimeUtil.getTime("yyyy-MM-dd")));

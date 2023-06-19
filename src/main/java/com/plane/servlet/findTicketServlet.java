@@ -2,8 +2,6 @@ package com.plane.servlet;
 
 import com.alibaba.fastjson.JSON;
 import com.plane.entity.ticket;
-import com.plane.service.flightMService;
-import com.plane.service.serviceImpl.flightServiceImpl;
 import com.plane.service.serviceImpl.ticketServiceImpl;
 import com.plane.service.ticketService;
 

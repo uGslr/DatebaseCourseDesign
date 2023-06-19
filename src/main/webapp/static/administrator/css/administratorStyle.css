@@ -27,3 +27,47 @@
 /*    box-shadow: none;*/
 /*    outline: none;*/
 /*}*/
+
+.addFlight {
+    width: 600px;
+    padding: 20px;
+    margin: 50px auto;
+    max-width: 600px;
+}
+.addFlight h1 {
+    text-align: center;
+    color: #333333;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+.addFlight label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 10px;
+}
+.addFlight input[type="text"], select {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #cccccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #333333;
+    box-sizing: border-box;
+}
+.addFlight button {
+    background-color: #4CAF50;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.addFlight button:hover {
+    background-color: #E24425;
+}

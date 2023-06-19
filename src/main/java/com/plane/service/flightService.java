@@ -1,11 +1,12 @@
 package com.plane.service;
 
+import com.plane.entity.airline;
 import com.plane.entity.flight;
-import com.plane.entity.ticket;
+import com.plane.entity.plane;
 
 import java.util.List;
 
-public interface flightMService {
+public interface flightService {
     public List<flight> getFlightByMessage (
             String airportLocation1,
             String airportLocation2,
@@ -18,9 +19,14 @@ public interface flightMService {
             float ectMoney,
             float bctMoney,
             String airlineNo,
+            int state,
             String planeNo
     );
 
     public boolean changeFlightTime(String flightNo, String takeOffTime, String landTime);
+
+    public List<plane> findPlane ();
+
+    public List<airline> findAirline ();
 
 }

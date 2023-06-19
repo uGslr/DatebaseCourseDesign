@@ -1,16 +1,17 @@
 package com.plane.service.serviceImpl;
 
+import com.plane.entity.airline;
 import com.plane.entity.flight;
-import com.plane.entity.ticket;
+import com.plane.entity.plane;
 import com.plane.mapper.flightMapper;
-import com.plane.service.flightMService;
+import com.plane.service.flightService;
 import com.utils.SqlSessionFactoryUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import java.util.List;
 
-public class flightServiceImpl implements flightMService {
+public class flightServiceImpl implements flightService {
 
     @Override
     public List<flight> getFlightByMessage(String airportLocation1, String airportLocation2, String time) {
@@ -60,7 +61,7 @@ public class flightServiceImpl implements flightMService {
     }
 
     @Override
-    public boolean insertFlight(float ectMoney, float bctMoney, String airlineNo, String planeNo) {
+    public boolean insertFlight(float ectMoney, float bctMoney, String airlineNo, int state, String planeNo) {
         SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtil.getSqlSessionFactory();
 
         SqlSession sqlSession = sqlSessionFactory.openSession();
@@ -68,13 +69,13 @@ public class flightServiceImpl implements flightMService {
         flightMapper fm = sqlSession.getMapper(flightMapper.class);
 
         try {
-            fm.insertFlight(ectMoney, bctMoney, airlineNo, planeNo);
+            fm.insertFlight(ectMoney, bctMoney, airlineNo, state, planeNo);
             sqlSession.commit();
             sqlSession.close();
         } catch (Exception e) {
             sqlSession.commit();
             sqlSession.close();
-            System.out.println("flightMService:error");
+            System.out.println("flightService:error");
             System.out.println(e);
             return false;
         }
@@ -98,6 +99,36 @@ public class flightServiceImpl implements flightMService {
         sqlSession.close();
 
         return t > 0;
+    }
+
+    @Override
+    public List<plane> findPlane() {
+        SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtil.getSqlSessionFactory();
+
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        flightMapper fm = sqlSession.getMapper(flightMapper.class);
+
+        List<plane> t = fm.findPlane();
+
+        sqlSession.close();
+
+        return t;
+    }
+
+    @Override
+    public List<airline> findAirline() {
+        SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtil.getSqlSessionFactory();
+
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        flightMapper fm = sqlSession.getMapper(flightMapper.class);
+
+        List<airline> t = fm.findAirline();
+
+        sqlSession.close();
+
+        return t;
     }
 
 }

@@ -5,6 +5,16 @@
 
 <mapper namespace="com.plane.mapper.flightMapper">
 
+    <select id="findAirline">
+        select *
+        from findAirlineMessageAll
+    </select>
+
+    <select id="findPlane">
+        select *
+        from plane
+    </select>
+
     <delete id="returnTicket">
         delete
         from ticket
@@ -44,6 +54,7 @@
                 #{ectMoney},
                 #{bctMoney},
                 #{airlineNo},
+                #{state},
                 #{planeNo}
             )
         }

@@ -24,7 +24,7 @@ public class ticketServiceImpl implements ticketService {
             sqlSession.close();
         } catch (Exception e) {
             sqlSession.close();
-            System.out.println("flightMService:error");
+            System.out.println("flightService:error");
             System.out.println(e);
             return false;
         }

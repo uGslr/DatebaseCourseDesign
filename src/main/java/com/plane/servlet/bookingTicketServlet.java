@@ -1,7 +1,5 @@
 package com.plane.servlet;
 
-import com.plane.service.flightMService;
-import com.plane.service.serviceImpl.flightServiceImpl;
 import com.plane.service.serviceImpl.ticketServiceImpl;
 import com.plane.service.ticketService;
 import com.utils.TranscodingUtil;

@@ -1,7 +1,8 @@
 package com.plane.servlet;
 
 import com.alibaba.fastjson.JSON;
-import com.plane.entity.flight;
+import com.plane.entity.airline;
+import com.plane.entity.plane;
 import com.plane.service.flightService;
 import com.plane.service.serviceImpl.flightServiceImpl;
 
@@ -11,16 +12,15 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "getFlightAllServlet", value = "/getFlightAllServlet")
-public class getFlightAllServlet extends HttpServlet {
+@WebServlet(name = "findAirlineServlet", value = "/findAirlineServlet")
+public class findAirlineServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        flightService fms = new flightServiceImpl();
+        flightService fs = new flightServiceImpl();
 
-        List<flight> flight = fms.getFlightAll();
-
+        List<airline> airline = fs.findAirline();
         // 将其转化为json数据 序列化
-        String jsonUm = JSON.toJSONString(flight);
+        String jsonUm = JSON.toJSONString(airline);
 
         // 响应数据
         response.setContentType("text/json;charset=utf-8");
