@@ -2,6 +2,13 @@
 修改用户信息的也写在这里面了
  */
 
+
+/*
+给年龄设置最大值
+ */
+const registerBirthDay = document.getElementById('registerDate')
+const dateTime = new Date(+new Date()+8*3600*1000);
+registerBirthDay.max = new Date(dateTime).toISOString().substring(0, 10)
 /*
 姓名验证：不能有不合理的名字出现（太长或者太短），也不能为空
  */

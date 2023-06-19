@@ -16,7 +16,7 @@ function loadPassengerMessage() {
             })
             let html = ''
             if (select === '') {
-                html = "<label>当前暂未有登记信息，请登记实名信息后进行购票<a >删除</a></label>"
+                html = "<label>当前暂未有登记信息，请登记实名信息后进行购票</label>"
             } else {
                 html = select
             }

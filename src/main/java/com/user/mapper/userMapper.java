@@ -51,7 +51,7 @@ public interface userMapper {
      * @param age 年龄信息
      */
     void AddUserAge(@Param("account") String account,
-                    @Param("age") Date age);
+                    @Param("age") String age);
 
     /**
      * 为用户添加性别信息

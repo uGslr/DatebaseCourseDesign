@@ -59,7 +59,7 @@ public class userServiceImpl implements userService {
             System.out.println("注册服务: 性别");
             insertSex(account, sex);
         }
-        if (age != null) {
+        if (age != null && !age.equals("")) {
             System.out.println("注册服务: 年龄");
             insertAge(account, age);
         }
@@ -136,9 +136,7 @@ public class userServiceImpl implements userService {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         userMapper um = sqlSession.getMapper(userMapper.class);
 
-        Date sql_age = Date.valueOf(age);
-
-        um.AddUserAge(account, sql_age);
+        um.AddUserAge(account, age);
 
         sqlSession.commit();
         sqlSession.close();
