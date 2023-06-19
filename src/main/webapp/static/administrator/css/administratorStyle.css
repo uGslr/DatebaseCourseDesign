@@ -1,0 +1,29 @@
+#administrator-newCompany{
+    display: none;
+}
+#administrator-newPlane{
+    display: none;
+}
+#administrator-newAirline{
+    display: none;
+}
+#administrator-newFlight{
+    display: none;
+}
+#administrator-ticketStrategy{
+    display: none;
+}
+#administrator-allFlight{
+    display: flex;
+}
+
+/*input[datetime-local].administrator-datetime-local {*/
+/*    font-family: Arial, sans-serif;*/
+/*    font-size: 16px;*/
+/*    color: #333;*/
+/*    padding: 8px;*/
+/*    border: 1px solid #ccc;*/
+/*    border-radius: 4px;*/
+/*    box-shadow: none;*/
+/*    outline: none;*/
+/*}*/

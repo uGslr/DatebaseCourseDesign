@@ -22,13 +22,12 @@ public interface flightMapper {
                        @Param("pIDNo") String pIDNo,
                        @Param("Level1") String Level1);
 
-    void insertFlight (@Param("ticketOffTime") String takeOffTime,
-                       @Param("landTime") String landTime,
-                       @Param("economyClassTicket") int economyClassTicket,
-                       @Param("businessClassTicket") int businessClassTicket,
-                       @Param("ectMoney") float ectMoney,
+    void insertFlight (@Param("ectMoney") float ectMoney,
                        @Param("bctMoney") float bctMoney,
                        @Param("airlineNo") String airlineNo,
-                       @Param("state") int state,
                        @Param("planeNo") String planeNo);
+
+    int changeFlightTime (@Param("flightNo") String flightNo,
+                          @Param("takeOffTime") String takeOffTime,
+                          @Param("landTime") String landTime);
 }

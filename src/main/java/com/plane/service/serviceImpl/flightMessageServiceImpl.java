@@ -52,9 +52,10 @@ public class flightMessageServiceImpl implements flightMessageService {
 
         flightMapper fm = sqlSession.getMapper(flightMapper.class);
 
+        List<flight> t = fm.getFlightAll();
         sqlSession.close();
 
-        return fm.getFlightAll();
+        return t;
     }
 
     @Override
@@ -80,7 +81,7 @@ public class flightMessageServiceImpl implements flightMessageService {
     }
 
     @Override
-    public boolean insertFlight(String takeOffTime, String landTime, int economyClassTicket, int businessClassTicket,
+    public boolean insertFlight(int economyClassTicket, int businessClassTicket,
                              float ectMoney, float bctMoney, String airlineNo, int state, String planeNo) {
         SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtil.getSqlSessionFactory();
 
@@ -89,8 +90,7 @@ public class flightMessageServiceImpl implements flightMessageService {
         flightMapper fm = sqlSession.getMapper(flightMapper.class);
 
         try {
-            fm.insertFlight(takeOffTime, landTime, economyClassTicket,
-                businessClassTicket, ectMoney, bctMoney, airlineNo, state, planeNo);
+            fm.insertFlight(ectMoney, bctMoney, airlineNo, planeNo);
             sqlSession.commit();
         } catch (Exception e) {
             sqlSession.commit();
@@ -101,5 +101,18 @@ public class flightMessageServiceImpl implements flightMessageService {
         }
 
         return true;
+    }
+
+    @Override
+    public boolean changeFlightTime(String flightNo, String takeOffTime, String landTime) {
+        SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtil.getSqlSessionFactory();
+
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        flightMapper fm = sqlSession.getMapper(flightMapper.class);
+
+        int t = fm.changeFlightTime(flightNo, takeOffTime, landTime);
+
+        return t > 0;
     }
 }

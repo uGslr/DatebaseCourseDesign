@@ -20,8 +20,6 @@ public interface flightMessageService {
             String Level1
     );
     public boolean insertFlight (
-            String takeOffTime,
-            String landTime,
             int economyClassTicket,
             int businessClassTicket,
             float ectMoney,
@@ -30,4 +28,6 @@ public interface flightMessageService {
             int state,
             String planeNo
     );
+
+    public boolean changeFlightTime(String flightNo, String takeOffTime, String landTime);
 }

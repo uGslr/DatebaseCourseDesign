@@ -21,6 +21,7 @@
     <link href="static/administrator/css/tabler-payments.min.css" rel="stylesheet"/>
     <link href="static/administrator/css/tabler-vendors.min.css" rel="stylesheet"/>
     <link href="static/administrator/css/demo.min.css" rel="stylesheet"/>
+    <link href="static/administrator/css/administratorStyle.css">
 
     <script src="static/administrator/js/administrator.js"></script>
     <script src="static/js/loginMessage.js"></script>
@@ -40,9 +41,12 @@
 			<div class="container">
 				<div class="top-menu">
 					<ul>
-						<li class="active" style="margin-left: 14px"><a href="index.html">全部机票</a></li>|
-						<li><a href="popular-AirLine.html">票价策略</a></li>|
-						<li><a href="order.html">新增航班</a></li>|
+						<li style="margin-left: 14px"><a class="a" onclick="toAdministratorAllTFlight ()">全部机票</a></li>|
+						<li><a class="a" onclick="toAdministratorTicketStrategy ()">票价策略</a></li>|
+						<li><a class="a" onclick="toAdministratorNewFlight ()">新增航班</a></li>|
+                        <li><a class="a" onclick="toAdministratorNewAirline ()">添加航线</a></li>|
+                        <li><a class="a" onclick="toAdministratorNewPlane ()">登记新机</a></li>|
+                        <li><a class="a" onclick="toAdministratorNewCompany ()">注册航司</a></li>|
 <!--						<li><a href="idMessage.html">乘客信息</a></li>-->
 						<div class="clearfix"></div>
 					</ul>
@@ -50,7 +54,7 @@
 				<div class="login-section">
 					<ul>
 						<li id="loginMessage"><a href="login.html">登录</a>  </li> |
-						<li><a id="clearCookie" onclick="deLogin()">注册</a> </li> |
+						<li><a id="clearCookie" class="a" onclick="deLogin()">注册</a> </li> |
 						<div class="clearfix"></div>
 					</ul>
 				</div>
@@ -59,8 +63,13 @@
 		</div>
 	</div>
 	<!-- header-section-ends -->
-	<div class="col-12">
-        <div class="card">
+    <div id="administrator-newCompany"></div>
+    <div id="administrator-newPlane"></div>
+    <div id="administrator-newAirline"></div>
+    <div id="administrator-newFlight"></div>
+    <div id="administrator-ticketStrategy"></div>
+	<div class="col-12" >
+        <div id="administrator-allFlight" class="card">
             <div class="card-body border-bottom py-3">
                 <div class="d-flex">
                     <div class="ms-auto text-secondary">
