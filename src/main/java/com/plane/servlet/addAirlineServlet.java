@@ -18,10 +18,14 @@ public class addAirlineServlet extends HttpServlet {
 
         flightService fs = new flightServiceImpl();
 
-        if (fs.insertAirline(airportNo1, airportNo2)) {
-            response.getWriter().write("true");
+        if (fs.findAirlineIsRepeat(airportNo1, airportNo2)) {
+            response.getWriter().write("repeat");
         } else {
-            response.getWriter().write("false");
+            if (fs.insertAirline(airportNo1, airportNo2)) {
+                response.getWriter().write("true");
+            } else {
+                response.getWriter().write("false");
+            }
         }
     }
 

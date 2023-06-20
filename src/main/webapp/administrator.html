@@ -42,7 +42,7 @@
 				<div class="top-menu">
 					<ul>
 						<li style="margin-left: 14px"><a class="a" onclick="toAdministratorAllTFlight ()">全部航班</a></li>|
-						<li><a class="a" onclick="toAdministratorTicketStrategy ()">票价策略</a></li>|
+<!--						<li><a class="a" onclick="toAdministratorTicketStrategy ()">票价策略</a></li>|-->
 						<li><a class="a" onclick="toAdministratorNewFlight ()">新增航班</a></li>|
                         <li><a class="a" onclick="toAdministratorNewAirline ()">添加航线</a></li>|
                         <li><a class="a" onclick="toAdministratorNewPlane ()">登记新机</a></li>|
@@ -83,24 +83,22 @@
         	<div class="addFlight">
 		    	<h1>添加飞机</h1>
 		    	<label>飞机编号</label>
-		    	<input type="text">
-				<label style="color: #ac2925;display: none"></label>
+		    	<input id="addPlaneNo" type="text">
 		    	<label for="airLineNo">所属航空公司</label>
-		    	<select>
+		    	<select id="airlineCompany">
 					<option value="请选择" selected disabled style="display:none;">请选择</option>
 		    		<option value="1">1</option>
 		    		<option value="2">2</option>
 		    	</select>
 				<label>飞机型号</label>
-		    	<input type="text">
-				<label style="color: #ac2925;display: none"></label>
+		    	<input id="planeTypeNo" type="text">
 		    	<label>经济舱座位数</label>
-		    	<input type="text">
-				<label style="color: #ac2925;display: none"></label>
+		    	<input id="ect" type="text">
 				<label>商务舱座位数</label>
-		    	<input type="text">
+		    	<input id="bct" type="text">
 				<label style="color: #ac2925;display: none"></label>
-		    	<button>提交</button>
+		    	<button onclick="addPlaneButtonFunction ()">提交</button>
+				<label id="addPlaneLabel" style="color: #ac2925;display: none"></label>
 				<label style="color: #ac2925;display: none"></label>
 	    	</div>
 		</div>
@@ -153,25 +151,26 @@
 	    	</div>
 		</div>
     </div>
-    <div id="administrator-ticketStrategy">
-		<div class="col-xl-6">
-			<div class="row d-flex justify-content-cente">
-				<div class="col-md-6 col-xl-12">
-					<label class="form-label">-100 0 100</label>
-					<input type="range" class="form-range mb-2" value="0" min="-100" max="100" step="10">
-					<input type="range" class="form-range mb-2" value="0" min="-100" max="100" step="10">
-					<input type="range" class="form-range mb-2" value="0" min="-100" max="100" step="10">
-					<input type="range" class="form-range mb-2" value="0" min="-100" max="100" step="10">
-					<input type="range" class="form-range mb-2" value="0" min="-100" max="100" step="10">
+	<div id="priceStrategy">
+		<div class="priceStrategy-on">
+			<div class="priceStrategy-container">
+				<h2>修改票价(x.min=-1,x.max=1)</h2>
+				<h3>计算公式: ( X + 1 ) * 原价</h3>
+				<div>
+<!--					<label>原价占比（计算公式：原价 * X * 0.01）</label>-->
+					<label>经济舱票价变动幅度</label>
+					<input type="range" class="form-range mb-2 rate-price" value="0" min="-100" max="100" step="1">
+<!--					<label>机票售出率占比（计算公式：机票售出率 * X * 0.01 * 0.01 * 原价 + 原价）</label>-->
+					<label>商务舱票价变动幅度</label>
+					<input type="range" class="form-range mb-2 rate-price" value="0" min="-100" max="100" step="1">
+<!--					<input type="range" class="form-range mb-2" value="0" min="0" max="100" step="1">-->
+<!--					<input type="range" class="form-range mb-2" value="0" min="0" max="100" step="1">-->
+<!--					<input type="range" class="form-range mb-2" value="0" min="0" max="100" step="1">-->
 				</div>
-				<div class="col-md-6 col-xl-12">
-					<label class="form-label">-100 0 100</label>
-					<input type="range" class="form-range mb-2" value="0" min="-100" max="100" step="10">
-					<input type="range" class="form-range mb-2" value="0" min="-100" max="100" step="10">
-					<input type="range" class="form-range mb-2" value="0" min="-100" max="100" step="10">
-					<input type="range" class="form-range mb-2" value="0" min="-100" max="100" step="10">
-					<input type="range" class="form-range mb-2" value="0" min="-100" max="100" step="10">
-				</div>
+				<div class="floor">
+    			  	<button onclick="closePop ()">取消</button>
+    			  	<button onclick="changeMoneyFunction ()">确认修改</button>
+    			</div>
 			</div>
 		</div>
 	</div>
@@ -182,7 +181,7 @@
                     <div class="ms-auto text-secondary">
                         搜索:
                         <div class="ms-2 d-inline-block">
-                            <input type="text" class="form-control form-control-sm" aria-label="Search invoice">
+                            <input type="text" class="form-control form-control-sm" aria-label="Search invoice" id="searchText">
                         </div>
                     </div>
                 </div>
@@ -192,7 +191,8 @@
                     <thead>
                         <tr>
                             <th class="w-1">
-                                <input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select all invoices">
+<!--                                <input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select all invoices">-->
+<!--                           		<label>L</label>-->
                             </th>
                             <th class="w-1">航班号</th>
                             <th>航空公司</th>
@@ -209,8 +209,10 @@
 
                     </tbody>
                 </table>
-                <button class="btn align-text-top" onclick="changeButtonFunction ()" style="float: right">修改已选</button>
+                <button class="btn align-text-top" onclick="changeTimeButtonFunction ()" style="float: right">修改已选</button>
                 <button class="btn align-text-top" onclick="updateButtonFunction ()" style="float: right">更新航班</button>
+				<button class="btn align-text-top" onclick="document.getElementById('priceStrategy').style.display='flex'"
+						style="float: right">修改票价</button>
             </div>
 <!--            <div class="card-footer d-flex align-items-center">-->
 <!--                <p class="m-0 text-secondary">Showing <span>1</span> to <span>8</span> of <span>16</span> entries</p>-->

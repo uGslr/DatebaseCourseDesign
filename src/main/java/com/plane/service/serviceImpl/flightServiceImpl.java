@@ -29,7 +29,7 @@ public class flightServiceImpl implements flightService {
     }
 
     @Override
-    public List<flight> getFlightByNo(String flightNo) {
+    public List<flight> getFlightByUnknown(String x) {
 
         SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtil.getSqlSessionFactory();
 
@@ -37,7 +37,7 @@ public class flightServiceImpl implements flightService {
 
         flightMapper fm = sqlSession.getMapper(flightMapper.class);
 
-        List<flight> t = fm.getFlightByNo(flightNo);
+        List<flight> t = fm.getFlightByUnknown(x);
         sqlSession.close();
 
         return t;
@@ -139,6 +139,7 @@ public class flightServiceImpl implements flightService {
 
         int t = fm.updateFlightNoMessage(flightNo);
 
+//        System.out.println("更新过期数据是否失败:"+t);
         sqlSession.commit();
         sqlSession.close();
 
@@ -207,6 +208,68 @@ public class flightServiceImpl implements flightService {
         flightMapper fm = sqlSession.getMapper(flightMapper.class);
 
         int t = fm.insertAirline(airportNo1, airportNo2);
+
+        sqlSession.commit();
+        sqlSession.close();
+
+        return t > 0;
+    }
+
+    @Override
+    public List<company> findCompany() {
+        SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtil.getSqlSessionFactory();
+
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        flightMapper fm = sqlSession.getMapper(flightMapper.class);
+
+        List<company> t = fm.findCompany();
+
+        sqlSession.close();
+
+        return t;
+    }
+
+    @Override
+    public boolean insertPlane(String planeNo, String airlineCompanyNo, String planeTypeNo, int ect, int bct) {
+        SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtil.getSqlSessionFactory();
+
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        flightMapper fm = sqlSession.getMapper(flightMapper.class);
+
+        int t = fm.insertPlane(planeNo, airlineCompanyNo, planeTypeNo, ect, bct);
+
+        sqlSession.commit();
+        sqlSession.close();
+
+        return t > 0;
+    }
+
+    @Override
+    public boolean findAirlineIsRepeat(int airportNo1, int airportNo2) {
+        SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtil.getSqlSessionFactory();
+
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        flightMapper fm = sqlSession.getMapper(flightMapper.class);
+
+        int t = fm.findAirlineIsRepeat(airportNo1, airportNo2);
+
+        sqlSession.close();
+
+        return t > 0;
+    }
+
+    @Override
+    public boolean updateFlightMoney(float ectMoney, float bctMoney, String flightNo) {
+        SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtil.getSqlSessionFactory();
+
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        flightMapper fm = sqlSession.getMapper(flightMapper.class);
+
+        int t = fm.updateFlightMoney(ectMoney, bctMoney, flightNo);
 
         sqlSession.commit();
         sqlSession.close();

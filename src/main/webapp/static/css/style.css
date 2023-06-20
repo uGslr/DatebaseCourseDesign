@@ -269,6 +269,11 @@ button[disabled] {
 /*	color:#5BBD50;*/
 /*}*/
 
+.top-company-logos img {
+	border: 5px solid grey;
+	border-radius: 5px;
+}
+
 .ticketMessage {
 	font-family: Arial, sans-serif;
 	background-color: #f2f2f2;
@@ -2582,7 +2587,7 @@ address {
 	background:#E24425;
 }
 /*-- popular-restaurent--*/
-.Popular-Restaurants-content{
+.Popular-Flights-content{
 	padding:3em 0;
 }
 .restaurent-title h4{
@@ -3735,7 +3740,7 @@ address {
 	.buy {
 		margin-top: 0.8em;
 	}
-	.Popular-Restaurants-content {
+	.Popular-Flights-content {
 		padding: 3em 0 1.5em 0;
 	}
 	.order-form-head h3 {
@@ -4382,7 +4387,7 @@ address {
 		width: 33%;
 		padding: 0;
 	}
-	.Popular-Restaurants-content {
+	.Popular-Flights-content {
 		padding: 2em 0 1em 0;
 	}
 	.buy span {

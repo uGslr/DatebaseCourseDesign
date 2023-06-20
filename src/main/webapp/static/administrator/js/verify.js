@@ -123,3 +123,34 @@ document.getElementById('newCompanyButton').onclick = function () {
         }
     }
 }
+
+const search = document.getElementById('searchText')
+search.onblur = function () {
+    searchFunction ()
+}
+
+function searchFunction () {
+    const x = search.value.trim()
+    const xhttp = cbAJAX('findFlightByUnknownServlet?x=' + x)
+    xhttp.onreadystatechange = function () {
+        if (this.status === 200 && this.readyState === 4) {
+            const message = jQuery.parseJSON(this.responseText)
+            let inner = ''
+            $.each(message, function (i, n) {
+                inner = inner + flightMessageString(
+                    n.airlineCompanyName,
+                    n.flightNo,
+                    n.airportName1,
+                    n.takeOffTime,
+                    n.airportName2,
+                    n.landTime,
+                    n.ectMoney,
+                    n.economyClassTicket,
+                    n.bctMoney,
+                    n.businessClassTicket
+                )
+            })
+            document.getElementById("administratorTable").innerHTML = inner
+        }
+    }
+}

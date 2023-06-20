@@ -12,7 +12,7 @@ public interface flightMapper {
                                    @Param("airportLocation2") String airportLocation2,
                                    @Param("time1") String time1,
                                    @Param("time2") String time2);
-    List<flight> getFlightByNo (@Param("flightNo") String flightNo);
+    List<flight> getFlightByUnknown (@Param("x") String x);
 
     List<flight> getFlightAll ();
 
@@ -50,4 +50,18 @@ public interface flightMapper {
     List<airport> findAirport ();
 
     int insertAirline (@Param("airportNo1") int airportNo1, @Param("airportNo2") int airportNo2);
+
+    List<company> findCompany ();
+
+    int insertPlane (@Param("planeNo") String planeNo,
+                     @Param("airlineCompanyNo") String airlineCompanyNo,
+                     @Param("planeTypeNo") String planeTypeNo,
+                     @Param("ect") int ect,
+                     @Param("bct") int bct);
+
+    int findAirlineIsRepeat (@Param("airportNo1") int airportNo1, @Param("airportNo2") int airportNo2);
+
+    int updateFlightMoney (@Param("ectMoney") float ectMoney,
+                           @Param("bctMoney") float bctMoney,
+                           @Param("flightNo") String flightNo);
 }

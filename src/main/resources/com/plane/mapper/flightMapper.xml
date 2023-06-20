@@ -5,6 +5,29 @@
 
 <mapper namespace="com.plane.mapper.flightMapper">
 
+    <update id="updateFlightMoney">
+        update flight
+        set ectMoney = #{ectMoney}, bctMoney = #{bctMoney}
+        where flightNo = #{flightNo}
+    </update>
+
+    <select id="findAirlineIsRepeat">
+        select count(*)
+        from airline
+        where (airportNo1=#{airportNo1} and airportNo2=#{airportNo2}) or
+                (airportNo1=#{airportNo2} and airportNo2=#{airportNo1})
+    </select>
+
+    <insert id="insertPlane">
+        insert into plane(planeNo, airlineCompanyNo, planeTypeNo, ect, bct)
+        values (#{planeNo}, #{airlineCompanyNo}, #{planeTypeNo}, #{ect}, #{bct})
+    </insert>
+
+    <select id="findCompany">
+        select *
+        from airlineCompany
+    </select>
+
     <insert id="insertAirline">
         insert into airline
         values (#{airportNo1}, #{airportNo2})
@@ -106,10 +129,10 @@
         }
     </select>
 
-    <select id="getFlightByNo">
+    <select id="getFlightByUnknown">
         {
-            call procedure_getFlightByNo (
-                #{flightNo}
+            call procedure_getFlightByUnknown (
+                #{x}
             )
         }
     </select>

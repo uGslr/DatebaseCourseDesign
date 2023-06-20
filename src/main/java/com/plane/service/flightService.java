@@ -10,7 +10,14 @@ public interface flightService {
             String airportLocation2,
             String time
     );
-    public List<flight> getFlightByNo (String flightNo);
+
+    /**
+     * 实现管理员主页的模糊查找
+     * @param x
+     * @return
+     */
+    public List<flight> getFlightByUnknown (String x);
+
     public List<flight> getFlightAll ();
 
     public boolean insertFlight (
@@ -36,4 +43,12 @@ public interface flightService {
     public List<airport> findAirport ();
 
     public boolean insertAirline (int airportNo1, int airportNo2);
+
+    public List<company> findCompany ();
+
+    public boolean insertPlane (String planeNo, String airlineCompanyNo, String planeTypeNo, int ect, int bct);
+
+    public boolean findAirlineIsRepeat (int airportNo1, int airportNo2);
+
+    public boolean updateFlightMoney (float ectMoney, float bctMoney, String flightNo);
 }

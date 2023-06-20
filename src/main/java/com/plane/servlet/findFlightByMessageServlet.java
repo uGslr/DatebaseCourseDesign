@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * 在index.html查找符合客户要求机票时使用
+ */
 @WebServlet("/findFlightByMessageServlet")
 public class findFlightByMessageServlet extends HttpServlet {
     @Override
