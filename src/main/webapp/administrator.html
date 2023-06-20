@@ -110,19 +110,19 @@
         	<div class="addFlight">
 		    	<h1>新建航线</h1>
 		    	<label>端点机场1</label>
-		    	<select>
+		    	<select id="airport1">
 					<option value="请选择" selected disabled style="display:none;">请选择</option>
 		    		<option value="1">1</option>
 		    		<option value="2">2</option>
 		    	</select>
 		    	<label>端点机场2</label>
-		    	<select>
+		    	<select id="airport2">
 					<option value="请选择" selected disabled style="display:none;">请选择</option>
 		    		<option value="1">1</option>
 		    		<option value="2">2</option>
 		    	</select>
-		    	<button>提交</button>
-				<label style="color: #ac2925;display: none"></label>
+		    	<button onclick="addAirlineButtonFunction ()">提交</button>
+				<label id="airlineLabel" style="color: #ac2925;display: none"></label>
 	    	</div>
 		</div>
 	</div>
@@ -153,7 +153,28 @@
 	    	</div>
 		</div>
     </div>
-    <div id="administrator-ticketStrategy"></div>
+    <div id="administrator-ticketStrategy">
+		<div class="col-xl-6">
+			<div class="row d-flex justify-content-cente">
+				<div class="col-md-6 col-xl-12">
+					<label class="form-label">-100 0 100</label>
+					<input type="range" class="form-range mb-2" value="0" min="-100" max="100" step="10">
+					<input type="range" class="form-range mb-2" value="0" min="-100" max="100" step="10">
+					<input type="range" class="form-range mb-2" value="0" min="-100" max="100" step="10">
+					<input type="range" class="form-range mb-2" value="0" min="-100" max="100" step="10">
+					<input type="range" class="form-range mb-2" value="0" min="-100" max="100" step="10">
+				</div>
+				<div class="col-md-6 col-xl-12">
+					<label class="form-label">-100 0 100</label>
+					<input type="range" class="form-range mb-2" value="0" min="-100" max="100" step="10">
+					<input type="range" class="form-range mb-2" value="0" min="-100" max="100" step="10">
+					<input type="range" class="form-range mb-2" value="0" min="-100" max="100" step="10">
+					<input type="range" class="form-range mb-2" value="0" min="-100" max="100" step="10">
+					<input type="range" class="form-range mb-2" value="0" min="-100" max="100" step="10">
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="col-12" >
         <div id="administrator-allFlight" class="card">
             <div class="card-body border-bottom py-3">

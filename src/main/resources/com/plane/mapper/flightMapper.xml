@@ -5,6 +5,16 @@
 
 <mapper namespace="com.plane.mapper.flightMapper">
 
+    <insert id="insertAirline">
+        insert into airline
+        values (#{airportNo1}, #{airportNo2})
+    </insert>
+
+    <select id="findAirport">
+        select *
+        from airport
+    </select>
+
     <select id="findHotCity">
         select top 10 city1
         from findHotCity

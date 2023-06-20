@@ -72,3 +72,7 @@
 .ad button:hover {
     background-color: #E24425;
 }
+
+#administrator-ticketStrategy {
+    align-items: center;
+}

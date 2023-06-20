@@ -1,9 +1,6 @@
 package com.plane.service;
 
-import com.plane.entity.airline;
-import com.plane.entity.city;
-import com.plane.entity.flight;
-import com.plane.entity.plane;
+import com.plane.entity.*;
 
 import java.util.List;
 
@@ -35,4 +32,8 @@ public interface flightService {
     public boolean insertAirlineCompany (String airlineCompanyName, String airlineCompanyNo);
 
     public List<city> findHotCity ();
+
+    public List<airport> findAirport ();
+
+    public boolean insertAirline (int airportNo1, int airportNo2);
 }

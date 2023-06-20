@@ -56,7 +56,7 @@ document.getElementById('searchButton').onclick = function () {
     const end = document.getElementById('endSelect').value.trim()
     const date = document.getElementById('dateSelect').value.trim()
 
-    const url = 'getFlightByMessageServlet?airportLocation1='+ start + '&airportLocation2='+ end + '&time=' + date
+    const url = 'findFlightByMessageServlet?airportLocation1='+ start + '&airportLocation2='+ end + '&time=' + date
     const xhttp = cbAJAX(url)
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {

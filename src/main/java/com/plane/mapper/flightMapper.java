@@ -46,4 +46,8 @@ public interface flightMapper {
                               @Param("airlineCompanyNo") String airlineCompanyNo);
 
     List<city> findHotCity ();
+
+    List<airport> findAirport ();
+
+    int insertAirline (@Param("airportNo1") int airportNo1, @Param("airportNo2") int airportNo2);
 }

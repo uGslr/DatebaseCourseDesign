@@ -11,8 +11,8 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "getHotCityServlet", value = "/getHotCityServlet")
-public class getHotCityServlet extends HttpServlet {
+@WebServlet(name = "findHotCityServlet", value = "/findHotCityServlet")
+public class findHotCityServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         flightService fs = new flightServiceImpl();

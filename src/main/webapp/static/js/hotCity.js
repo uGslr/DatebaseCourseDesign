@@ -1,5 +1,5 @@
 function loadHostCity () {
-    const xhttp = cbAJAX('getHotCityServlet')
+    const xhttp = cbAJAX('findHotCityServlet')
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             const message = jQuery.parseJSON(this.responseText)

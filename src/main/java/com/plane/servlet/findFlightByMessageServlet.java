@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/getFlightByMessageServlet")
-public class getFlightByMessageServlet extends HttpServlet {
+@WebServlet("/findFlightByMessageServlet")
+public class findFlightByMessageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String airportLocation1 = TranscodingUtil.iso_8859_1_utf_8(req.getParameter("airportLocation1").trim());

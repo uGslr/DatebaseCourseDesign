@@ -3,7 +3,7 @@
  * 将搜索到的航班信息插入界面
  */
 function loadFlightMessage() {
-    const url = 'getFlightAllServlet'
+    const url = 'findFlightAllServlet'
     const xhttp = cbAJAX(url)
 
     xhttp.onreadystatechange = function () {
@@ -111,6 +111,7 @@ function toAdministratorNewFlight () {
     document.getElementById("administrator-newCompany").style.display = 'none'
 }
 function toAdministratorNewAirline () {
+    addOptionForAddAirline ()
     document.getElementById("administrator-allFlight").style.display = 'none'
     document.getElementById("administrator-ticketStrategy").style.display = 'none'
     document.getElementById("administrator-newFlight").style.display = 'none'
@@ -185,7 +186,32 @@ function changeButtonFunction () {
     }
 }
 
-function loadPlane () {
+function addAirlineButtonFunction () {
+    const airportNo1 = document.getElementById('airport1').value
+    const airportNo2 = document.getElementById('airport2').value
+    const airlineLabel = document.getElementById('airlineLabel')
+    if (airportNo1 === airportNo2) {
+        airlineLabel.innerText = "您选择的两个机场相同，无法创建航线"
+        airlineLabel.style.display = ''
+    } else {
+        airlineLabel.style.display = 'none'
+        const xhttp = cbAJAX('addAirlineServlet' +
+            '?airportNo1='+airportNo1 +
+            '&airportNo2='+airportNo2
+        )
+        xhttp.onreadystatechange = function () {
+            if (this.status===200&&this.readyState===4) {
+                if (this.responseText === 'true') {
+                    alert('创建成功')
+                } else {
+                    alert('创建失败')
+                }
+            }
+        }
+    }
+}
+
+function loadPlane (id) {
     const xhttp = cbAJAX('findPlaneServlet')
     xhttp.onreadystatechange = function () {
         if (this.status===200&&this.readyState===4) {
@@ -195,12 +221,12 @@ function loadPlane () {
                 select = select + "<option value=\"" + n.planeNo + "\">" +
                     n.planeNo + "/所属公司:" +n.airlineCompanyNo+ "</option>"
             })
-            document.getElementById('planeNo').innerHTML = select
+            document.getElementById(id).innerHTML = select
         }
     }
 }
 
-function loadAirline () {
+function loadAirline (id) {
     const xhttp = cbAJAX('findAirlineServlet')
     xhttp.onreadystatechange = function () {
         if (this.status===200&&this.readyState===4) {
@@ -212,12 +238,38 @@ function loadAirline () {
                 select = select + "<option value=\"" + "1" + n.airlineNo + "\">" + "从 " +
                     n.airportName2 + " 前往 " + n.airportName1 + "</option>"
             })
-            document.getElementById('airlineNo').innerHTML = select
+            document.getElementById(id).innerHTML = select
         }
     }
 }
 
-function addOptionForAddFlight () {
-    loadPlane()
-    loadAirline ()
+function loadAirport (id) {
+    const xhttp = cbAJAX('findAirportServlet')
+    xhttp.onreadystatechange = function () {
+        if (this.status===200&&this.readyState===4) {
+            // alert(this.responseText)
+            const message = jQuery.parseJSON(this.responseText)
+            let select = "<option value=\"请选择\" selected disabled style=\"display:none;\">请选择</option>"
+            $.each(message, function (i, n) {
+                select = select + "<option value=\"" + n.airportNo + "\">" +
+                    n.airportLocation + " / " + n.airportName + "</option>"
+            })
+            document.getElementById(id).innerHTML = select
+        }
+    }
 }
+
+function loadAirlineCompany (id) {
+
+}
+
+function addOptionForAddFlight () {
+    loadPlane('planeNo')
+    loadAirline ('airlineNo')
+}
+
+function addOptionForAddAirline () {
+    loadAirport ("airport1")
+    loadAirport ("airport2")
+}
+
