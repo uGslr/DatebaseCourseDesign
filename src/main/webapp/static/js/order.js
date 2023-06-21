@@ -33,8 +33,7 @@ function loadTicketMessage() {
                         "</div>"
                 } else {
                     inner = inner +
-                        "<button disabled>改签</button>" +
-                        "<button disabled>退票</button>" +
+                        "<button disabled>已结束</button>" +
                         "<div class=\"btn-container\"></div>" +
                         "</div>"
                 }

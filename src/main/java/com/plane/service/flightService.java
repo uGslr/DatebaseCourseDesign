@@ -51,4 +51,6 @@ public interface flightService {
     public boolean findAirlineIsRepeat (int airportNo1, int airportNo2);
 
     public boolean updateFlightMoney (float ectMoney, float bctMoney, String flightNo);
+
+    public List<bill> findAllMoneyByFlightNo ();
 }

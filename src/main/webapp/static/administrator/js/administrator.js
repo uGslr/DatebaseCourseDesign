@@ -30,6 +30,31 @@ function loadFlightMessage() {
     }
 }
 
+function loadBill () {
+    const xhttp = cbAJAX('findBillServlet')
+    xhttp.onreadystatechange = function () {
+        if (this.status===200&&this.readyState===4){
+            const message = jQuery.parseJSON(this.responseText)
+            let inner = ''
+
+            $.each(message, function (i, n) {
+                inner = inner + "<tr>" +
+                    "<td>" +
+                    n.flightNo+
+                    "</td>" +
+                    "<td>" +
+                    n.ectMoney +
+                    "</td>" +
+                    "<td>" +
+                    n.bctMoney +
+                    "</td>" +
+                    "</tr>"
+            })
+            document.getElementById("administratorBill").innerHTML = inner
+        }
+    }
+}
+
 /**
  * 把航班信息拼接成html代码
  * @param airLineCompanyName
@@ -108,24 +133,25 @@ function flightMessageString (airlineCompanyName, flightNo, airportName1,
 function toAdministratorAllTFlight () {
     loadFlightMessage()
     document.getElementById("administrator-allFlight").style.display = 'flex'
-    // document.getElementById("administrator-ticketStrategy").style.display = 'none'
+    document.getElementById("administrator-bill").style.display = 'none'
     document.getElementById("administrator-newFlight").style.display = 'none'
     document.getElementById("administrator-newAirline").style.display = 'none'
     document.getElementById("administrator-newPlane").style.display = 'none'
     document.getElementById("administrator-newCompany").style.display = 'none'
 }
-// function toAdministratorTicketStrategy () {
-//     document.getElementById("administrator-allFlight").style.display = 'none'
-//     document.getElementById("administrator-ticketStrategy").style.display = 'flex'
-//     document.getElementById("administrator-newFlight").style.display = 'none'
-//     document.getElementById("administrator-newAirline").style.display = 'none'
-//     document.getElementById("administrator-newPlane").style.display = 'none'
-//     document.getElementById("administrator-newCompany").style.display = 'none'
-// }
+function toAdministratorBill () {
+    loadBill ()
+    document.getElementById("administrator-allFlight").style.display = 'none'
+    document.getElementById("administrator-bill").style.display = 'flex'
+    document.getElementById("administrator-newFlight").style.display = 'none'
+    document.getElementById("administrator-newAirline").style.display = 'none'
+    document.getElementById("administrator-newPlane").style.display = 'none'
+    document.getElementById("administrator-newCompany").style.display = 'none'
+}
 function toAdministratorNewFlight () {
     addOptionForAddFlight ()
     document.getElementById("administrator-allFlight").style.display = 'none'
-    // document.getElementById("administrator-ticketStrategy").style.display = 'none'
+    document.getElementById("administrator-bill").style.display = 'none'
     document.getElementById("administrator-newFlight").style.display = 'flex'
     document.getElementById("administrator-newAirline").style.display = 'none'
     document.getElementById("administrator-newPlane").style.display = 'none'
@@ -134,7 +160,7 @@ function toAdministratorNewFlight () {
 function toAdministratorNewAirline () {
     addOptionForAddAirline ()
     document.getElementById("administrator-allFlight").style.display = 'none'
-    // document.getElementById("administrator-ticketStrategy").style.display = 'none'
+    document.getElementById("administrator-bill").style.display = 'none'
     document.getElementById("administrator-newFlight").style.display = 'none'
     document.getElementById("administrator-newAirline").style.display = 'flex'
     document.getElementById("administrator-newPlane").style.display = 'none'
@@ -143,7 +169,7 @@ function toAdministratorNewAirline () {
 function toAdministratorNewPlane () {
     addOptionForAddPlane ()
     document.getElementById("administrator-allFlight").style.display = 'none'
-    // document.getElementById("administrator-ticketStrategy").style.display = 'none'
+    document.getElementById("administrator-bill").style.display = 'none'
     document.getElementById("administrator-newFlight").style.display = 'none'
     document.getElementById("administrator-newAirline").style.display = 'none'
     document.getElementById("administrator-newPlane").style.display = 'flex'
@@ -151,7 +177,7 @@ function toAdministratorNewPlane () {
 }
 function toAdministratorNewCompany () {
     document.getElementById("administrator-allFlight").style.display = 'none'
-    // document.getElementById("administrator-ticketStrategy").style.display = 'none'
+    document.getElementById("administrator-bill").style.display = 'none'
     document.getElementById("administrator-newFlight").style.display = 'none'
     document.getElementById("administrator-newAirline").style.display = 'none'
     document.getElementById("administrator-newPlane").style.display = 'none'
@@ -203,7 +229,15 @@ function changeTimeButtonFunction () {
             const takeOffTime = toChangeTime[0].value.substring(0, 10)+' '+toChangeTime[0].value.substring(11, 16)
             const landTime = toChangeTime[1].value.substring(0, 10)+' '+toChangeTime[1].value.substring(11, 16)
 
-            changeFlightTime (checkBox[i].value, takeOffTime, landTime)
+            const date1 = new Date(takeOffTime);
+            const date2 = new Date(landTime);
+
+            if (date1 >= date2) {
+              alert('您输入的时间1需要小于时间2')
+            } else {
+              changeFlightTime (checkBox[i].value, takeOffTime, landTime)
+            }
+
         }
     }
 }

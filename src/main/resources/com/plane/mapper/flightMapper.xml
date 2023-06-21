@@ -5,6 +5,11 @@
 
 <mapper namespace="com.plane.mapper.flightMapper">
 
+    <select id="findAllMoneyByFlightNo">
+        select *
+        from findAllMoneyByFlightNo
+    </select>
+
     <update id="updateFlightMoney">
         update flight
         set ectMoney = #{ectMoney}, bctMoney = #{bctMoney}

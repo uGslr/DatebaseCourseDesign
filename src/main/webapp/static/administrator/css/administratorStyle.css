@@ -16,6 +16,10 @@
 #administrator-allFlight{
     display: flex;
 }
+#administrator-bill {
+    display: none;
+}
+
 
 /*input[datetime-local].administrator-datetime-local {*/
 /*    font-family: Arial, sans-serif;*/

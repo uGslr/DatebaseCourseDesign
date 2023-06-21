@@ -42,12 +42,11 @@
 				<div class="top-menu">
 					<ul>
 						<li style="margin-left: 14px"><a class="a" onclick="toAdministratorAllTFlight ()">全部航班</a></li>|
-<!--						<li><a class="a" onclick="toAdministratorTicketStrategy ()">票价策略</a></li>|-->
+						<li><a class="a" onclick="toAdministratorBill ()">营收报表</a></li>|
 						<li><a class="a" onclick="toAdministratorNewFlight ()">新增航班</a></li>|
                         <li><a class="a" onclick="toAdministratorNewAirline ()">添加航线</a></li>|
                         <li><a class="a" onclick="toAdministratorNewPlane ()">登记新机</a></li>|
                         <li><a class="a" onclick="toAdministratorNewCompany ()">注册航司</a></li>|
-<!--						<li><a href="idMessage.html">乘客信息</a></li>-->
 						<div class="clearfix"></div>
 					</ul>
 				</div>
@@ -149,6 +148,33 @@
 		    	<button id="addFlightButton">提交</button>
 				<label id="addFlightLabel" style="color: #ac2925;display: none"></label>
 	    	</div>
+		</div>
+    </div>
+	<div id="administrator-bill">
+		<div class="ad">
+			<table class="table card-table table-vcenter text-nowrap datatable">
+				<thead>
+				<tr>
+					<th>航班号</th>
+					<th>经济舱总营额</th>
+					<th>商务舱总营额</th>
+				</tr>
+				</thead>
+				<tbody id="administratorBill">
+				</tbody>
+			</table>
+<!--			<table class="table card-table table-vcenter text-nowrap datatable">-->
+<!--                    <thead>-->
+<!--                        <tr>-->
+<!--                            <th>航空公司</th>-->
+<!--                            <th>经济舱总营额</th>-->
+<!--                            <th>商务舱总营额</th>-->
+<!--                        </tr>-->
+<!--                    </thead>-->
+<!--                    <tbody id="administratorCompanyBill">-->
+
+<!--					</tbody>-->
+<!--                </table>-->
 		</div>
     </div>
 	<div id="priceStrategy">

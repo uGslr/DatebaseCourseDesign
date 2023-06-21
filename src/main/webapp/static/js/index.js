@@ -11,6 +11,15 @@ const dateTime = new Date(+new Date()+8*3600*1000);
 dateSelect.value = new Date(dateTime).toISOString().substring(0, 10)
 dateSelect.min = new Date(dateTime).toISOString().substring(0, 10)
 
+function cityToOption (a, b) {
+    let html = "<optgroup label=\""+b+"\">"
+    for (let i = 0; i<a.length; i++) {
+        html = html + "<option value=\""+ a[i] +"\">" + a[i] + "</option>"
+    }
+    html = html + "</optgroup>"
+    return html
+}
+
 /**
  * 给id为...的选择框添加内容
  * @param id
@@ -19,26 +28,103 @@ function writeFormUlLi (id) {
 
     const A = ["阿勒泰"]
     const B = ["巴中", "北京"]
+    const C = ["长沙", "重庆"]
+    const D = ["大连", "敦煌", "大庆"]
+    const G = ["贵阳", "广州"]
+    const H = ["海口", "杭州"]
+    const J = ["济南"]
+    const N = ["南京", "南昌"]
+    const Q = ["青岛"]
     const S = ["上海", "深圳"]
+    const T = ["天津"]
+    const W = ["武汉"]
+    const X = ["徐州", "厦门", "西安", "西宁"]
+    const Y = ["扬州"]
+    const Z = ["郑州"]
 
 
-    let html = "<optgroup label=\"A\">"
-    for (let i = 0; i<A.length; i++) {
-        html = html + "<option value=\""+ A[i] +"\">" + A[i] + "</option>"
-    }
-    html = html + "</optgroup>"
-
-    html = html + "<optgroup label=\"B\">"
-    for (let i = 0; i<B.length; i++) {
-        html = html + "<option value=\""+ B[i] +"\">" + B[i] + "</option>"
-    }
-    html = html + "</optgroup>"
-
-    html = html + "<optgroup label=\"S\">"
-    for (let i = 0; i<S.length; i++) {
-        html = html + "<option value=\""+ S[i] +"\">" + S[i] + "</option>"
-    }
-    html = html + "</optgroup>"
+    let html = cityToOption (A, 'A') +
+               cityToOption (B, 'B') +
+               cityToOption (C, 'C') +
+               cityToOption (D, 'D') +
+               cityToOption (G, 'G') +
+               cityToOption (H, 'H') +
+               cityToOption (J, 'J') +
+               cityToOption (N, 'N') +
+               cityToOption (Q, 'Q') +
+               cityToOption (S, 'S') +
+               cityToOption (T, 'T') +
+               cityToOption (W, 'W') +
+               cityToOption (X, 'X') +
+               cityToOption (Y, 'Y') +
+               cityToOption (Z, 'Z')
+    //     "<optgroup label=\"A\">"
+    // for (let i = 0; i<A.length; i++) {
+    //     html = html + "<option value=\""+ A[i] +"\">" + A[i] + "</option>"
+    // }
+    // html = html + "</optgroup>"
+    //
+    // html = html + "<optgroup label=\"B\">"
+    // for (let i = 0; i<B.length; i++) {
+    //     html = html + "<option value=\""+ B[i] +"\">" + B[i] + "</option>"
+    // }
+    // html = html + "</optgroup>"
+    //
+    // html = html + "<optgroup label=\"C\">"
+    // for (let i = 0; i<C.length; i++) {
+    //     html = html + "<option value=\""+ C[i] +"\">" + C[i] + "</option>"
+    // }
+    // html = html + "</optgroup>"
+    //
+    // html = html + "<optgroup label=\"D\">"
+    // for (let i = 0; i<D.length; i++) {
+    //     html = html + "<option value=\""+ D[i] +"\">" + D[i] + "</option>"
+    // }
+    // html = html + "</optgroup>"
+    //
+    // html = html + "<optgroup label=\"G\">"
+    // for (let i = 0; i<G.length; i++) {
+    //     html = html + "<option value=\""+ G[i] +"\">" + G[i] + "</option>"
+    // }
+    // html = html + "</optgroup>"
+    //
+    // html = html + "<optgroup label=\"H\">"
+    // for (let i = 0; i<B.length; i++) {
+    //     html = html + "<option value=\""+ H[i] +"\">" + H[i] + "</option>"
+    // }
+    // html = html + "</optgroup>"
+    //
+    // html = html + "<optgroup label=\"J\">"
+    // for (let i = 0; i<J.length; i++) {
+    //     html = html + "<option value=\""+ J[i] +"\">" + J[i] + "</option>"
+    // }
+    // html = html + "</optgroup>"
+    //
+    // html = html + "<optgroup label=\"N\">"
+    // for (let i = 0; i<N.length; i++) {
+    //     html = html + "<option value=\""+ N[i] +"\">" + N[i] + "</option>"
+    // }
+    // html = html + "</optgroup>"
+    //
+    // html = html + "<optgroup label=\"Q\">"
+    // for (let i = 0; i<Q.length; i++) {
+    //     html = html + "<option value=\""+ Q[i] +"\">" + Q[i] + "</option>"
+    // }
+    // html = html + "</optgroup>"
+    //
+    // html = html + "<optgroup label=\"S\">"
+    // for (let i = 0; i<S.length; i++) {
+    //     html = html + "<option value=\""+ S[i] +"\">" + S[i] + "</option>"
+    // }
+    // html = html + "</optgroup>"
+    //
+    // html = html + "<optgroup label=\"T\">"
+    // for (let i = 0; i<T.length; i++) {
+    //     html = html + "<option value=\""+ T[i] +"\">" + T[i] + "</option>"
+    // }
+    // html = html + "</optgroup>"
+    //
+    // html =
 
     const t = document.getElementById(id)
 

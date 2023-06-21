@@ -64,4 +64,6 @@ public interface flightMapper {
     int updateFlightMoney (@Param("ectMoney") float ectMoney,
                            @Param("bctMoney") float bctMoney,
                            @Param("flightNo") String flightNo);
+
+    List<bill> findAllMoneyByFlightNo ();
 }

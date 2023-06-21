@@ -21,6 +21,7 @@
             )
         }
     </select>
+
     <select id="findPassenger">
         select *
         from passenger

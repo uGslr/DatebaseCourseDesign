@@ -277,4 +277,19 @@ public class flightServiceImpl implements flightService {
         return t > 0;
     }
 
+    @Override
+    public List<bill> findAllMoneyByFlightNo() {
+        SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtil.getSqlSessionFactory();
+
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        flightMapper fm = sqlSession.getMapper(flightMapper.class);
+
+        List<bill> t = fm.findAllMoneyByFlightNo();
+
+        sqlSession.close();
+
+        return t;
+    }
+
 }
