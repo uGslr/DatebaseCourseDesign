@@ -21,7 +21,8 @@ function getAccount() {
 
 
 function cbAJAX(url) {
-    const servletUrl = "http://localhost:8080/demo3/"
+    // alert(window.location)
+    const servletUrl = "http://localhost:8080/DatebaseCourseDesign/"
     // 发送ajax请求
     // 1 创建核心对象
     let xhttp
