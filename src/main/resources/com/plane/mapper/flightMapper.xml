@@ -87,6 +87,12 @@
         }
     </select>
 
+    <select id="findTicketByID">
+        select *
+        from ticket
+        where pIDNo = #{pIDNo} and flightNo = #{flightNo}
+    </select>
+
     <update id="changeFlightTime">
         update Flight
         set takeOffTime = #{takeOffTime}, landTime = #{landTime}

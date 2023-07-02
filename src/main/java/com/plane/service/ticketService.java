@@ -14,4 +14,6 @@ public interface ticketService {
     public List<ticket> findTicket(String account);
 
     public boolean returnTicket(String ticketNo);
+
+    public boolean isIDHaveTicket(String pIDNo, String flightNo);
 }

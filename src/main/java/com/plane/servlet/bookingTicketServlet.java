@@ -1,5 +1,6 @@
 package com.plane.servlet;
 
+import com.plane.entity.ticket;
 import com.plane.service.serviceImpl.ticketServiceImpl;
 import com.plane.service.ticketService;
 import com.utils.TranscodingUtil;
@@ -8,6 +9,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "bookingTicketServlet", value = "/bookingTicketServlet")
 public class bookingTicketServlet extends HttpServlet {
@@ -20,13 +22,19 @@ public class bookingTicketServlet extends HttpServlet {
 
         ticketService ts = new ticketServiceImpl();
         System.out.println(flightNo+" "+account+" "+pIDNo+" "+Level1);
-        boolean flag = ts.insertTicket(flightNo, account, pIDNo, Level1);
-
-        if (flag) {
-            response.getWriter().write("true");
+        if (ts.isIDHaveTicket(pIDNo, flightNo)) {
+            response.getWriter().write("exist");
         } else {
-            response.getWriter().write("false");
+
+            boolean flag = ts.insertTicket(flightNo, account, pIDNo, Level1);
+
+            if (flag) {
+                response.getWriter().write("true");
+            } else {
+                response.getWriter().write("false");
+            }
         }
+
     }
 
     @Override

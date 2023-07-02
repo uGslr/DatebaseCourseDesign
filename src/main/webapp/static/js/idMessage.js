@@ -70,26 +70,26 @@ function checkId () {
 
             flag = false
         } else if (idType === "身份证") {
-            if (id.length !== 18) {
+            if (/^\d{17}[0-9a-zA-Z]$/.test(id)) {
+                idLabel.style.display = 'none'
+
+                flag = true
+            } else {
                 idLabel.innerText = "请正确填写身份证号!"
                 idLabel.style.display = ''
 
                 flag = false
-            } else {
+            }
+        } else if (idType === "户口簿") {
+            if (/^\d{10}$/.test(id)) {
                 idLabel.style.display = 'none'
 
                 flag = true
-            }
-        } else if (idType === "户口簿") {
-            if (id.length !== 10) {
+            } else {
                 idLabel.innerText = "请正确填写户号!"
                 idLabel.style.display = ''
 
                 flag = false
-            } else {
-                idLabel.style.display = 'none'
-
-                flag = true
             }
         }
     }

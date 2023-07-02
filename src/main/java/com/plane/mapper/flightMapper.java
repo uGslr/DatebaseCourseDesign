@@ -66,4 +66,6 @@ public interface flightMapper {
                            @Param("flightNo") String flightNo);
 
     List<bill> findAllMoneyByFlightNo ();
+
+    List<ticket> findTicketByID (@Param("pIDNo") String pIDNo, @Param("flightNo") String flightNo);
 }

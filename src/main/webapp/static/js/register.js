@@ -24,7 +24,7 @@ function registerNameFunction() {
 
     const nameLabel = document.getElementById("nameLabel")
 
-    if( name == '' ) {
+    if( name === '' ) {
         nameLabel.innerText = "请输入用户名/姓名!"
         nameLabel.style.display = ''
 
@@ -88,12 +88,12 @@ function registerAccountFunction() {
 
     const account = registerAccount.value.trim()
 
-    if(account.length == '') {
+    if(account.length === 0) {
         accountLabel.innerText = '请填写手机号!'
         accountLabel.style.display = ''
 
         flag = false
-    } else if( account.length != 11 ) {
+    } else if( !/^\d{11}$/.test(account) ) {
         accountLabel.innerText = '手机号格式不正确!'
         accountLabel.style.display = ''
 
@@ -145,7 +145,7 @@ function registerPwdFunction () {
 
     const pwd = registerPwd.value.trim()
 
-    if ( pwd == '' ) {
+    if ( pwd === '' || pwd === null) {
         pwdLabel.innerText = '密码不能为空!'
         pwdLabel.style.display = ''
 

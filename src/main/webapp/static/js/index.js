@@ -58,73 +58,6 @@ function writeFormUlLi (id) {
                cityToOption (X, 'X') +
                cityToOption (Y, 'Y') +
                cityToOption (Z, 'Z')
-    //     "<optgroup label=\"A\">"
-    // for (let i = 0; i<A.length; i++) {
-    //     html = html + "<option value=\""+ A[i] +"\">" + A[i] + "</option>"
-    // }
-    // html = html + "</optgroup>"
-    //
-    // html = html + "<optgroup label=\"B\">"
-    // for (let i = 0; i<B.length; i++) {
-    //     html = html + "<option value=\""+ B[i] +"\">" + B[i] + "</option>"
-    // }
-    // html = html + "</optgroup>"
-    //
-    // html = html + "<optgroup label=\"C\">"
-    // for (let i = 0; i<C.length; i++) {
-    //     html = html + "<option value=\""+ C[i] +"\">" + C[i] + "</option>"
-    // }
-    // html = html + "</optgroup>"
-    //
-    // html = html + "<optgroup label=\"D\">"
-    // for (let i = 0; i<D.length; i++) {
-    //     html = html + "<option value=\""+ D[i] +"\">" + D[i] + "</option>"
-    // }
-    // html = html + "</optgroup>"
-    //
-    // html = html + "<optgroup label=\"G\">"
-    // for (let i = 0; i<G.length; i++) {
-    //     html = html + "<option value=\""+ G[i] +"\">" + G[i] + "</option>"
-    // }
-    // html = html + "</optgroup>"
-    //
-    // html = html + "<optgroup label=\"H\">"
-    // for (let i = 0; i<B.length; i++) {
-    //     html = html + "<option value=\""+ H[i] +"\">" + H[i] + "</option>"
-    // }
-    // html = html + "</optgroup>"
-    //
-    // html = html + "<optgroup label=\"J\">"
-    // for (let i = 0; i<J.length; i++) {
-    //     html = html + "<option value=\""+ J[i] +"\">" + J[i] + "</option>"
-    // }
-    // html = html + "</optgroup>"
-    //
-    // html = html + "<optgroup label=\"N\">"
-    // for (let i = 0; i<N.length; i++) {
-    //     html = html + "<option value=\""+ N[i] +"\">" + N[i] + "</option>"
-    // }
-    // html = html + "</optgroup>"
-    //
-    // html = html + "<optgroup label=\"Q\">"
-    // for (let i = 0; i<Q.length; i++) {
-    //     html = html + "<option value=\""+ Q[i] +"\">" + Q[i] + "</option>"
-    // }
-    // html = html + "</optgroup>"
-    //
-    // html = html + "<optgroup label=\"S\">"
-    // for (let i = 0; i<S.length; i++) {
-    //     html = html + "<option value=\""+ S[i] +"\">" + S[i] + "</option>"
-    // }
-    // html = html + "</optgroup>"
-    //
-    // html = html + "<optgroup label=\"T\">"
-    // for (let i = 0; i<T.length; i++) {
-    //     html = html + "<option value=\""+ T[i] +"\">" + T[i] + "</option>"
-    // }
-    // html = html + "</optgroup>"
-    //
-    // html =
 
     const t = document.getElementById(id)
 
@@ -323,11 +256,11 @@ function addClickToButton(flightNo, airlineCompanyName, planeNo,
             "<label for=\"cabin-select\">选择舱位：</label>" +
             "<select id=\"cabin-select\">"
 
-        if (economyClassTicket === 0) {
+        if (economyClassTicket === '0') {
             html = html +
                 "<option value=\"经济舱\" disabled=\"disabled\">经济舱(售空)</option>" +
                 "<option value=\"商务舱\">商务舱/头等舱  售价: ￥" + bctMoney + "</option>"
-        } else if (businessClassTicket === 0) {
+        } else if (businessClassTicket === '0') {
             html = html +
                 "<option value=\"经济舱\">经济舱        售价: ￥" + ectMoney + "</option>" +
                 "<option value=\"商务舱\" disabled=\"disabled\">商务舱/头等舱(售空)</option>"
@@ -380,6 +313,8 @@ function confirm (flightNo, account) {
             if (this.responseText === 'true') {
                 document.getElementById('buykk').style.display = 'none';
                 alert("订票成功")
+            } else if (this.responseText === 'exist') {
+                alert("同一航班您只能订一次")
             } else {
                 alert("订票失败")
             }
